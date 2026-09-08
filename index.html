@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Santapur Poster Hub</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#070711;
+    color:white;
+}
+
+/* LOGIN PAGE */
+#loginPage{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    background:
+    radial-gradient(circle at 20% 20%,#063c5a,transparent 35%),
+    radial-gradient(circle at 80% 80%,#5b075b,transparent 35%),
+    #070711;
+}
+
+.login-box{
+    width:100%;
+    max-width:420px;
+    padding:40px 30px;
+    border:1px solid #333;
+    border-radius:25px;
+    background:rgba(20,20,35,.85);
+    backdrop-filter:blur(15px);
+    box-shadow:0 0 40px rgba(0,234,255,.15);
+    text-align:center;
+    animation:fadeIn 1s;
+}
+
+.logo{
+    font-size:30px;
+    font-weight:bold;
+    color:#00eaff;
+    margin-bottom:10px;
+}
+
+.login-box h2{
+    font-size:32px;
+    margin:15px 0 8px;
+}
+
+.login-box p{
+    color:#aaa;
+    margin-bottom:30px;
+}
+
+.input{
+    width:100%;
+    padding:15px;
+    margin:10px 0;
+    border:1px solid #444;
+    border-radius:12px;
+    background:#0c0c19;
+    color:white;
+    font-size:16px;
+    outline:none;
+}
+
+.input:focus{
+    border-color:#00eaff;
+    box-shadow:0 0 12px rgba(0,234,255,.2);
+}
+
+.login-btn{
+    width:100%;
+    padding:15px;
+    margin-top:15px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(90deg,#00eaff,#703cff);
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.login-btn:hover{
+    transform:scale(1.03);
+    box-shadow:0 0 25px #00eaff;
+}
+
+.error{
+    color:#ff4d6d;
+    margin-top:15px;
+    display:none;
+}
+
+/* WEBSITE */
+#website{
+    display:none;
+}
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    padding:18px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(5,5,15,.95);
+    border-bottom:1px solid #29294a;
+    backdrop-filter:blur(15px);
+}
+
+.nav-logo{
+    color:#00eaff;
+    font-size:22px;
+    font-weight:bold;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:22px;
+    align-items:center;
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+}
+
+nav a:hover{
+    color:#00eaff;
+}
+
+.logout{
+    background:#ff3158;
+    padding:9px 17px;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+/* HERO */
+.hero{
+    min-height:88vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:30px;
+    background:
+    radial-gradient(circle at 15% 30%,#06485d,transparent 35%),
+    radial-gradient(circle at 85% 70%,#62075d,transparent 35%);
+}
+
+.hero h1{
+    font-size:clamp(40px,8vw,78px);
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:#00eaff;
+}
+
+.hero p{
+    max-width:700px;
+    margin:auto;
+    color:#c5c5d5;
+    font-size:18px;
+    line-height:1.7;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:30px;
+    padding:15px 30px;
+    border-radius:30px;
+    background:linear-gradient(90deg,#00eaff,#713cff);
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:scale(1.06);
+    box-shadow:0 0 25px #00eaff;
+}
+
+/* SECTIONS */
+section{
+    padding:80px 7%;
+}
+
+.title{
+    text-align:center;
+    font-size:38px;
+    margin-bottom:45px;
+}
+
+.title span{
+    color:#00eaff;
+}
+
+/* SERVICES */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.card{
+    padding:30px 20px;
+    text-align:center;
+    border:1px solid #29294a;
+    background:#111122;
+    border-radius:20px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    border-color:#00eaff;
+    box-shadow:0 10px 30px rgba(0,234,255,.15);
+}
+
+.icon{
+    font-size:50px;
+    margin-bottom:18px;
+}
+
+.card h3{
+    color:#00eaff;
+    margin-bottom:12px;
+}
+
+.card p{
+    color:#aaa;
+    line-height:1.5;
+}
+
+/* PRICE */
+.price-section{
+    background:#0b0b18;
+}
+
+.price-cards{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+}
+
+.price-card{
+    width:280px;
+    padding:35px;
+    text-align:center;
+    border:1px solid #333;
+    border-radius:22px;
+    background:#131326;
+}
+
+.price-card h3{
+    font-size:22px;
+}
+
+.price{
+    font-size:48px;
+    font-weight:bold;
+    color:#00eaff;
+    margin:20px 0;
+}
+
+/* ORDER */
+.order{
+    text-align:center;
+}
+
+.order-box{
+    max-width:650px;
+    margin:auto;
+    padding:40px;
+    background:#111122;
+    border:1px solid #29294a;
+    border-radius:25px;
+}
+
+.order-box input,
+.order-box textarea{
+    width:100%;
+    padding:14px;
+    margin:8px 0;
+    background:#080812;
+    color:white;
+    border:1px solid #444;
+    border-radius:10px;
+    outline:none;
+}
+
+.order-box textarea{
+    height:100px;
+    resize:none;
+}
+
+.whatsapp{
+    display:inline-block;
+    margin-top:15px;
+    padding:15px 28px;
+    background:#25D366;
+    border-radius:30px;
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* CONTACT */
+.contact{
+    text-align:center;
+    background:#0d0d1c;
+}
+
+.contact p{
+    color:#ccc;
+    font-size:18px;
+    margin:14px;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:25px;
+    background:#05050b;
+    color:#777;
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* MOBILE */
+@media(max-width:700px){
+
+    nav{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    nav ul{
+        gap:12px;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero{
+        min-height:80vh;
+    }
+
+    .hero h1{
+        font-size:43px;
+    }
+
+    section{
+        padding:60px 5%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= LOGIN ================= -->
+
+<div id="loginPage">
+
+    <div class="login-box">
+
+        <div class="logo">⚡ SANTAPUR</div>
+
+        <h2>Welcome Back 👋</h2>
+
+        <p>Login to Santapur Poster Hub</p>
+
+        <input
+            class="input"
+            type="text"
+            id="username"
+            placeholder="Enter username">
+
+        <input
+            class="input"
+            type="password"
+            id="password"
+            placeholder="Enter password">
+
+        <button class="login-btn" onclick="login()">
+            LOGIN
+        </button>
+
+        <div class="error" id="error">
+            ❌ Wrong username or password!
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= MAIN WEBSITE ================= -->
+
+<div id="website">
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="nav-logo">
+        ⚡ Santapur Poster Hub
+    </div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#price">Price</a></li>
+        <li><a href="#order">Order</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li>
+            <a class="logout" onclick="logout()">Logout</a>
+        </li>
+    </ul>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div>
+
+        <h1>
+            Santapur
+            <span>Poster Hub</span>
+        </h1>
+
+        <p>
+            Welcome to Santapur Poster Hub! 🎨
+            We create stylish and professional posters
+            for football players, sports, birthdays,
+            events and custom designs.
+        </p>
+
+        <a href="#services" class="btn">
+            Explore Services →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section id="services">
+
+    <h2 class="title">
+        Our <span>Services</span>
+    </h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">⚽</div>
+            <h3>Football Posters</h3>
+            <p>
+                Stylish posters of Ronaldo, Messi,
+                Neymar and your favorite players.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🏐</div>
+            <h3>Volleyball Posters</h3>
+            <p>
+                Custom volleyball player and team
+                posters for sports lovers.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🏏</div>
+            <h3>Cricket Posters</h3>
+            <p>
+                Professional cricket player and
+                team poster designs.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🎨</div>
+            <h3>Custom Posters</h3>
+            <p>
+                Send us your idea and get a
+                unique poster designed for you.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PRICES -->
+
+<section class="price-section" id="price">
+
+    <h2 class="title">
+        Our <span>Prices</span>
+    </h2>
+
+    <div class="price-cards">
+
+        <div class="price-card">
+
+            <h3>Small Size Poster</h3>
+
+            <div class="price">
+                Rs.49
+            </div>
+
+            <p>
+                Perfect for small prints
+            </p>
+
+            <a href="#order" class="btn">
+                Order Now
+            </a>
+
+        </div>
+
+
+        <div class="price-card">
+
+            <h3>Basic Poster</h3>
+
+            <div class="price">
+                Rs.99
+            </div>
+
+            <p>
+                Stylish professional poster
+            </p>
+
+            <a href="#order" class="btn">
+                Order Now
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ORDER -->
+
+<section class="order" id="order">
+
+    <h2 class="title">
+        Place Your <span>Order</span>
+    </h2>
+
+    <div class="order-box">
+
+        <input
+            type="text"
+            id="customerName"
+            placeholder="Your Name">
+
+        <input
+            type="tel"
+            id="customerPhone"
+            placeholder="Your Phone Number">
+
+        <textarea
+            id="posterDetails"
+            placeholder="Tell us what poster you want..."></textarea>
+
+        <br>
+
+        <button class="btn" onclick="sendOrder()">
+            📲 Send Order on WhatsApp
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+    <h2 class="title">
+        Contact <span>Us</span>
+    </h2>
+
+    <p>📍 Chandrapur-8, Santapur, Rautahat, Gaur Road</p>
+
+    <p>📞 9700007714</p>
+
+    <p>
+        Stylish Poster of football player Ronaldo,Messi,Neymar
+        Want to buy the oder us today.
+    </p>
+
+    <a
+        class="whatsapp"
+        href="https://wa.me/9779700007714"
+        target="_blank">
+        💬 WhatsApp: 9700007714
+    </a>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+    © 2026 Santapur Poster Hub
+    <br>
+    All Rights Reserved
+</footer>
+
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+/* LOGIN */
+
+function login(){
+
+    let username =
+        document.getElementById("username").value;
+
+    let password =
+        document.getElementById("password").value;
+
+    /*
+       CHANGE THESE IF YOU WANT
+       YOUR OWN USERNAME/PASSWORD
+    */
+
+    if(username === "Aayush" && password === "0000"){
+
+        document.getElementById("loginPage").style.display="none";
+
+        document.getElementById("website").style.display="block";
+
+        document.getElementById("error").style.display="none";
+
+        window.scrollTo(0,0);
+
+    }else{
+
+        document.getElementById("error").style.display="block";
+
+    }
+
+}
+
+
+/* LOGOUT */
+
+function logout(){
+
+    let confirmLogout =
+        confirm("Are you sure you want to logout?");
+
+    if(confirmLogout){
+
+        document.getElementById("website").style.display="none";
+
+        document.getElementById("loginPage").style.display="flex";
+
+        document.getElementById("username").value="";
+
+        document.getElementById("password").value="";
+
+    }
+
+}
+
+
+/* WHATSAPP ORDER */
+
+function sendOrder(){
+
+    let name =
+        document.getElementById("customerName").value;
+
+    let phone =
+        document.getElementById("customerPhone").value;
+
+    let details =
+        document.getElementById("posterDetails").value;
+let choose=getElementById("Choose poster").value;
+    if(name === "" || phone === "" || details === ""){
+
+        alert("Please fill all order details!");
+
+        return;
+    }
+
+    let message =
+        "Hello Santapur Poster Hub! 👋%0A%0A" +
+        "I want to order a poster.%0A%0A" +
+        "Name: " + name + "%0A" +
+        "Phone: " + phone + "%0A" +
+        "Poster Details: " + details;
+
+    window.open(
+        "https://wa.me/9779700007714?text=" + message,
+        "_blank"
+    );
+
+}
+
+</script>
+
+</body>
+</html>
