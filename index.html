@@ -3,751 +3,1928 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Santapur Poster Hub</title>
 
 <style>
+
+/* =========================
+   BASIC
+========================= */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+html{
     scroll-behavior:smooth;
 }
 
 body{
-    font-family:Arial,sans-serif;
-    background:#070711;
+    background:#050816;
     color:white;
-}
-
-/* LOGIN PAGE */
-#loginPage{
     min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
-    background:
-    radial-gradient(circle at 20% 20%,#063c5a,transparent 35%),
-    radial-gradient(circle at 80% 80%,#5b075b,transparent 35%),
-    #070711;
 }
 
-.login-box{
-    width:100%;
-    max-width:420px;
-    padding:40px 30px;
-    border:1px solid #333;
-    border-radius:25px;
-    background:rgba(20,20,35,.85);
+button{
+    cursor:pointer;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:rgba(5,8,22,.92);
     backdrop-filter:blur(15px);
-    box-shadow:0 0 40px rgba(0,234,255,.15);
-    text-align:center;
-    animation:fadeIn 1s;
+
+    border-bottom:1px solid #26304d;
+}
+
+.navbar{
+    max-width:1200px;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:15px 20px;
 }
 
 .logo{
-    font-size:30px;
+    font-size:22px;
     font-weight:bold;
+    color:#00eaff;
+
+    text-shadow:
+    0 0 10px #00eaff;
+}
+
+.nav-buttons{
+    display:flex;
+    gap:8px;
+}
+
+.nav-buttons button{
+    padding:9px 14px;
+    border:0;
+    border-radius:20px;
+
+    background:#111a35;
+    color:white;
+}
+
+.nav-buttons button:hover{
+    background:#00eaff;
+    color:#001018;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:600px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:60px 20px;
+
+    background:
+    radial-gradient(circle at center,
+    rgba(0,234,255,.15),
+    transparent 40%);
+}
+
+.hero-content{
+    max-width:800px;
+}
+
+.hero h1{
+    font-size:55px;
+    margin-bottom:20px;
+
+    color:#00eaff;
+
+    text-shadow:
+    0 0 10px #00eaff,
+    0 0 30px #00eaff;
+}
+
+.hero p{
+    font-size:20px;
+    color:#b9c2d9;
+    margin-bottom:30px;
+}
+
+.main-btn{
+    padding:15px 30px;
+
+    border:none;
+    border-radius:30px;
+
+    background:linear-gradient(
+        90deg,
+        #00eaff,
+        #008cff
+    );
+
+    color:white;
+    font-weight:bold;
+    font-size:16px;
+
+    box-shadow:0 0 20px rgba(0,234,255,.4);
+}
+
+.main-btn:hover{
+    transform:scale(1.05);
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+section{
+    padding:60px 20px;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:35px;
+
+    font-size:32px;
+    color:#00eaff;
+}
+
+
+/* =========================
+   PRODUCTS
+========================= */
+
+.products{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(230px,1fr));
+
+    gap:25px;
+}
+
+.product{
+    background:
+    linear-gradient(
+        145deg,
+        #101a35,
+        #080d20
+    );
+
+    border:1px solid #263454;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    text-align:center;
+
+    transition:.3s;
+}
+
+.product:hover{
+    transform:translateY(-8px);
+
+    box-shadow:
+    0 10px 35px
+    rgba(0,234,255,.15);
+}
+
+.product-icon{
+    font-size:60px;
+    margin-bottom:15px;
+}
+
+.product h3{
     color:#00eaff;
     margin-bottom:10px;
 }
 
-.login-box h2{
-    font-size:32px;
-    margin:15px 0 8px;
-}
-
-.login-box p{
-    color:#aaa;
-    margin-bottom:30px;
-}
-
-.input{
-    width:100%;
-    padding:15px;
-    margin:10px 0;
-    border:1px solid #444;
-    border-radius:12px;
-    background:#0c0c19;
-    color:white;
-    font-size:16px;
-    outline:none;
-}
-
-.input:focus{
-    border-color:#00eaff;
-    box-shadow:0 0 12px rgba(0,234,255,.2);
-}
-
-.login-btn{
-    width:100%;
-    padding:15px;
-    margin-top:15px;
-    border:none;
-    border-radius:30px;
-    background:linear-gradient(90deg,#00eaff,#703cff);
-    color:white;
-    font-size:17px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.login-btn:hover{
-    transform:scale(1.03);
-    box-shadow:0 0 25px #00eaff;
-}
-
-.error{
-    color:#ff4d6d;
-    margin-top:15px;
-    display:none;
-}
-
-/* WEBSITE */
-#website{
-    display:none;
-}
-
-nav{
-    position:sticky;
-    top:0;
-    z-index:1000;
-    padding:18px 7%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:rgba(5,5,15,.95);
-    border-bottom:1px solid #29294a;
-    backdrop-filter:blur(15px);
-}
-
-.nav-logo{
-    color:#00eaff;
-    font-size:22px;
-    font-weight:bold;
-}
-
-nav ul{
-    list-style:none;
-    display:flex;
-    gap:22px;
-    align-items:center;
-}
-
-nav a{
-    text-decoration:none;
-    color:white;
-}
-
-nav a:hover{
-    color:#00eaff;
-}
-
-.logout{
-    background:#ff3158;
-    padding:9px 17px;
-    border-radius:20px;
-    cursor:pointer;
-}
-
-/* HERO */
-.hero{
-    min-height:88vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:30px;
-    background:
-    radial-gradient(circle at 15% 30%,#06485d,transparent 35%),
-    radial-gradient(circle at 85% 70%,#62075d,transparent 35%);
-}
-
-.hero h1{
-    font-size:clamp(40px,8vw,78px);
-    margin-bottom:20px;
-}
-
-.hero h1 span{
-    color:#00eaff;
-}
-
-.hero p{
-    max-width:700px;
-    margin:auto;
-    color:#c5c5d5;
-    font-size:18px;
-    line-height:1.7;
-}
-
-.btn{
-    display:inline-block;
-    margin-top:30px;
-    padding:15px 30px;
-    border-radius:30px;
-    background:linear-gradient(90deg,#00eaff,#713cff);
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-    transition:.3s;
-}
-
-.btn:hover{
-    transform:scale(1.06);
-    box-shadow:0 0 25px #00eaff;
-}
-
-/* SECTIONS */
-section{
-    padding:80px 7%;
-}
-
-.title{
-    text-align:center;
-    font-size:38px;
-    margin-bottom:45px;
-}
-
-.title span{
-    color:#00eaff;
-}
-
-/* SERVICES */
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:25px;
-}
-
-.card{
-    padding:30px 20px;
-    text-align:center;
-    border:1px solid #29294a;
-    background:#111122;
-    border-radius:20px;
-    transition:.3s;
-}
-
-.card:hover{
-    transform:translateY(-10px);
-    border-color:#00eaff;
-    box-shadow:0 10px 30px rgba(0,234,255,.15);
-}
-
-.icon{
-    font-size:50px;
-    margin-bottom:18px;
-}
-
-.card h3{
-    color:#00eaff;
-    margin-bottom:12px;
-}
-
-.card p{
-    color:#aaa;
-    line-height:1.5;
-}
-
-/* PRICE */
-.price-section{
-    background:#0b0b18;
-}
-
-.price-cards{
-    display:flex;
-    justify-content:center;
-    gap:25px;
-    flex-wrap:wrap;
-}
-
-.price-card{
-    width:280px;
-    padding:35px;
-    text-align:center;
-    border:1px solid #333;
-    border-radius:22px;
-    background:#131326;
-}
-
-.price-card h3{
-    font-size:22px;
+.product p{
+    color:#aeb8d0;
 }
 
 .price{
-    font-size:48px;
+    font-size:28px;
     font-weight:bold;
-    color:#00eaff;
+
     margin:20px 0;
+
+    color:#00ffae;
 }
 
-/* ORDER */
-.order{
+.order-btn{
+    border:0;
+
+    padding:12px 25px;
+
+    border-radius:25px;
+
+    background:#ff007f;
+    color:white;
+
+    font-weight:bold;
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about{
+    background:#080d20;
+}
+
+.about-box{
+    max-width:800px;
+    margin:auto;
+
+    text-align:center;
+
+    color:#b8c0d3;
+
+    line-height:1.8;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-box{
+    text-align:center;
+
+    background:#101a35;
+
+    border-radius:20px;
+
+    padding:35px;
+}
+
+.contact-box h3{
+    color:#00eaff;
+    margin-bottom:15px;
+}
+
+.contact-box p{
+    margin:8px;
+    color:#c3cadc;
+}
+
+
+/* =========================
+   DASHBOARD
+========================= */
+
+#dashboard{
+    display:none;
+
+    min-height:100vh;
+
+    background:
+    radial-gradient(
+        circle at top,
+        #101d3f,
+        #050816 55%
+    );
+
+    padding:40px 20px;
+}
+
+.dashboard-container{
+    max-width:1100px;
+    margin:auto;
+}
+
+.dashboard-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:30px;
+}
+
+.dashboard-header h2{
+    color:#00eaff;
+}
+
+.logout-btn{
+    padding:10px 18px;
+
+    border:0;
+    border-radius:20px;
+
+    background:#ff315c;
+    color:white;
+}
+
+
+/* =========================
+   DASHBOARD CARDS
+========================= */
+
+.dashboard-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(200px,1fr));
+
+    gap:20px;
+}
+
+.dash-card{
+    padding:25px;
+
+    background:#101a35;
+
+    border:1px solid #29375c;
+
+    border-radius:18px;
+
     text-align:center;
 }
 
-.order-box{
-    max-width:650px;
-    margin:auto;
-    padding:40px;
-    background:#111122;
-    border:1px solid #29294a;
-    border-radius:25px;
+.dash-card span{
+    font-size:40px;
 }
 
-.order-box input,
-.order-box textarea{
+.dash-card h3{
+    margin:12px 0;
+    color:#00eaff;
+}
+
+.dash-card button{
+    padding:10px 18px;
+
+    border:0;
+    border-radius:20px;
+
+    background:#00eaff;
+    color:#001018;
+
+    font-weight:bold;
+}
+
+
+/* =========================
+   INTERNAL ORDER
+========================= */
+
+.internal{
+    margin-top:30px;
+
+    display:none;
+
+    background:#101a35;
+
+    border:1px solid #29375c;
+
+    border-radius:20px;
+
+    padding:30px;
+}
+
+.internal h2{
+    color:#00eaff;
+    margin-bottom:20px;
+}
+
+input,
+select,
+textarea{
+
     width:100%;
+
     padding:14px;
+
     margin:8px 0;
-    background:#080812;
-    color:white;
-    border:1px solid #444;
+
     border-radius:10px;
+
+    border:1px solid #354368;
+
+    background:#070c1d;
+
+    color:white;
+
     outline:none;
 }
 
-.order-box textarea{
-    height:100px;
-    resize:none;
+textarea{
+    min-height:100px;
+    resize:vertical;
 }
 
-.whatsapp{
-    display:inline-block;
-    margin-top:15px;
-    padding:15px 28px;
-    background:#25D366;
-    border-radius:30px;
-    color:white;
-    text-decoration:none;
+.submit-btn{
+    width:100%;
+
+    padding:14px;
+
+    margin-top:10px;
+
+    border:0;
+    border-radius:10px;
+
+    background:#00eaff;
+
+    color:#001018;
+
     font-weight:bold;
 }
 
-/* CONTACT */
-.contact{
+
+/* =========================
+   ORDERS
+========================= */
+
+.order-item{
+    background:#080d20;
+
+    padding:18px;
+
+    border-radius:12px;
+
+    margin:10px 0;
+
+    border-left:4px solid #00eaff;
+}
+
+.order-item h3{
+    color:#00eaff;
+}
+
+.order-item p{
+    margin:5px 0;
+    color:#c2c9da;
+}
+
+
+/* =========================
+   PROFILE
+========================= */
+
+.profile{
     text-align:center;
-    background:#0d0d1c;
 }
 
-.contact p{
-    color:#ccc;
-    font-size:18px;
-    margin:14px;
+.profile-icon{
+    font-size:70px;
+    margin-bottom:15px;
 }
 
-/* FOOTER */
+.profile h2{
+    color:#00eaff;
+}
+
+.profile p{
+    color:#b9c2d9;
+    margin:8px;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:2000;
+
+    background:rgba(0,0,0,.8);
+
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+}
+
+.modal-box{
+
+    width:100%;
+    max-width:420px;
+
+    background:#101a35;
+
+    border:1px solid #34456f;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    position:relative;
+
+    box-shadow:
+    0 0 50px
+    rgba(0,234,255,.15);
+}
+
+.modal-box h2{
+    text-align:center;
+
+    color:#00eaff;
+
+    margin-bottom:20px;
+}
+
+.close{
+
+    position:absolute;
+
+    right:18px;
+    top:12px;
+
+    font-size:28px;
+
+    color:#ff315c;
+
+    cursor:pointer;
+}
+
+.switch{
+    text-align:center;
+
+    margin-top:18px;
+
+    color:#00eaff;
+
+    cursor:pointer;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
 footer{
+
     text-align:center;
+
     padding:25px;
-    background:#05050b;
-    color:#777;
+
+    background:#03050d;
+
+    color:#727d98;
 }
 
-/* ANIMATION */
-@keyframes fadeIn{
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
 
-/* MOBILE */
-@media(max-width:700px){
+/* =========================
+   MOBILE
+========================= */
 
-    nav{
+@media(max-width:600px){
+
+    .navbar{
+        flex-direction:column;
+        gap:12px;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .hero p{
+        font-size:17px;
+    }
+
+    .dashboard-header{
         flex-direction:column;
         gap:15px;
     }
 
-    nav ul{
-        gap:12px;
+    .nav-buttons{
         flex-wrap:wrap;
         justify-content:center;
     }
 
-    .hero{
-        min-height:80vh;
-    }
-
-    .hero h1{
-        font-size:43px;
-    }
-
-    section{
-        padding:60px 5%;
-    }
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- ================= LOGIN ================= -->
 
-<div id="loginPage">
+<!-- =================================
+     PUBLIC WEBSITE
+================================= -->
 
-    <div class="login-box">
+<div id="publicWebsite">
 
-        <div class="logo">⚡ SANTAPUR</div>
 
-        <h2>Welcome Back 👋</h2>
+<header>
 
-        <p>Login to Santapur Poster Hub</p>
+<div class="navbar">
 
-        <input
-            class="input"
-            type="text"
-            id="username"
-            placeholder="Enter username">
+<div class="logo">
+🔥 SANTAPUR POSTER HUB
+</div>
 
-        <input
-            class="input"
-            type="password"
-            id="password"
-            placeholder="Enter password">
+<div class="nav-buttons">
 
-        <button class="login-btn" onclick="login()">
-            LOGIN
-        </button>
+<button onclick="scrollToSection('home')">
+Home
+</button>
 
-        <div class="error" id="error">
-            ❌ Wrong username or password!
-        </div>
+<button onclick="scrollToSection('products')">
+Products
+</button>
 
-    </div>
+<button onclick="scrollToSection('about')">
+About
+</button>
+
+<button onclick="scrollToSection('contact')">
+Contact
+</button>
+
+<button onclick="openLogin()">
+Login
+</button>
+
+<button onclick="openSignup()">
+Sign Up
+</button>
 
 </div>
 
+</div>
 
-<!-- ================= MAIN WEBSITE ================= -->
+</header>
 
-<div id="website">
-
-<!-- NAVBAR -->
-
-<nav>
-
-    <div class="nav-logo">
-        ⚡ Santapur Poster Hub
-    </div>
-
-    <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#price">Price</a></li>
-        <li><a href="#order">Order</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li>
-            <a class="logout" onclick="logout()">Logout</a>
-        </li>
-    </ul>
-
-</nav>
 
 
 <!-- HERO -->
 
 <section class="hero" id="home">
 
-    <div>
+<div class="hero-content">
 
-        <h1>
-            Santapur
-            <span>Poster Hub</span>
-        </h1>
+<h1>
+SANTAPUR<br>
+POSTER HUB
+</h1>
 
-        <p>
-            Welcome to Santapur Poster Hub! 🎨
-            We create stylish and professional posters
-            for football players, sports, birthdays,
-            events and custom designs.
-        </p>
+<p>
+Premium Football Player Posters ⚽
+<br>
+Messi • Ronaldo • Neymar • Custom Designs
+</p>
 
-        <a href="#services" class="btn">
-            Explore Services →
-        </a>
+<button
+class="main-btn"
+onclick="scrollToSection('products')">
 
-    </div>
+🛍️ View Posters
 
-</section>
+</button>
 
-
-<!-- SERVICES -->
-
-<section id="services">
-
-    <h2 class="title">
-        Our <span>Services</span>
-    </h2>
-
-    <div class="cards">
-
-        <div class="card">
-            <div class="icon">⚽</div>
-            <h3>Football Posters</h3>
-            <p>
-                Stylish posters of Ronaldo, Messi,
-                Neymar and your favorite players.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🏐</div>
-            <h3>Volleyball Posters</h3>
-            <p>
-                Custom volleyball player and team
-                posters for sports lovers.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🏏</div>
-            <h3>Cricket Posters</h3>
-            <p>
-                Professional cricket player and
-                team poster designs.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🎨</div>
-            <h3>Custom Posters</h3>
-            <p>
-                Send us your idea and get a
-                unique poster designed for you.
-            </p>
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
-<!-- PRICES -->
 
-<section class="price-section" id="price">
+<!-- PRODUCTS -->
 
-    <h2 class="title">
-        Our <span>Prices</span>
-    </h2>
+<section id="products">
 
-    <div class="price-cards">
+<div class="container">
 
-        <div class="price-card">
-
-            <h3>Small Size Poster</h3>
-
-            <div class="price">
-                Rs.49
-            </div>
-
-            <p>
-                Perfect for small prints
-            </p>
-
-            <a href="#order" class="btn">
-                Order Now
-            </a>
-
-        </div>
+<h2 class="section-title">
+🔥 Our Products
+</h2>
 
 
-        <div class="price-card">
+<div class="products">
 
-            <h3>Basic Poster</h3>
 
-            <div class="price">
-                Rs.99
-            </div>
+<div class="product">
 
-            <p>
-                Stylish professional poster
-            </p>
+<div class="product-icon">
+⚽
+</div>
 
-            <a href="#order" class="btn">
-                Order Now
-            </a>
+<h3>
+Football Poster
+</h3>
 
-        </div>
+<p>
+Premium quality football poster.
+</p>
 
-    </div>
+<div class="price">
+Rs. 99
+</div>
+
+<button
+class="order-btn"
+onclick="requireLogin()">
+
+Order Now
+
+</button>
+
+</div>
+
+
+
+<div class="product">
+
+<div class="product-icon">
+⭐
+</div>
+
+<h3>
+Small Poster
+</h3>
+
+<p>
+Small size affordable poster.
+</p>
+
+<div class="price">
+Rs. 49
+</div>
+
+<button
+class="order-btn"
+onclick="requireLogin()">
+
+Order Now
+
+</button>
+
+</div>
+
+
+
+<div class="product">
+
+<div class="product-icon">
+🔥
+</div>
+
+<h3>
+Custom Poster
+</h3>
+
+<p>
+Your name and favorite player.
+</p>
+
+<div class="price">
+Rs. 149
+</div>
+
+<button
+class="order-btn"
+onclick="requireLogin()">
+
+Order Now
+
+</button>
+
+</div>
+
+
+
+<div class="product">
+
+<div class="product-icon">
+🏆
+</div>
+
+<h3>
+Premium Poster
+</h3>
+
+<p>
+High quality premium design.
+</p>
+
+<div class="price">
+Rs. 199
+</div>
+
+<button
+class="order-btn"
+onclick="requireLogin()">
+
+Order Now
+
+</button>
+
+</div>
+
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- ORDER -->
 
-<section class="order" id="order">
+<!-- ABOUT -->
 
-    <h2 class="title">
-        Place Your <span>Order</span>
-    </h2>
+<section class="about" id="about">
 
-    <div class="order-box">
+<div class="container">
 
-        <input
-            type="text"
-            id="customerName"
-            placeholder="Your Name">
+<h2 class="section-title">
+About Us
+</h2>
 
-        <input
-            type="tel"
-            id="customerPhone"
-            placeholder="Your Phone Number">
+<div class="about-box">
 
-        <textarea
-            id="posterDetails"
-            placeholder="Tell us what poster you want..."></textarea>
+<p>
 
-        <br>
+Welcome to <b>Santapur Poster Hub</b>.
 
-        <button class="btn" onclick="sendOrder()">
-            📲 Send Order on WhatsApp
-        </button>
+We create stylish football player
+posters including Messi, Ronaldo,
+Neymar and custom designs.
 
-    </div>
+You can browse our website without
+creating an account.
+
+To place an order, simply create an
+account or login.
+
+</p>
+
+</div>
+
+</div>
 
 </section>
+
 
 
 <!-- CONTACT -->
 
-<section class="contact" id="contact">
+<section id="contact">
 
-    <h2 class="title">
-        Contact <span>Us</span>
-    </h2>
+<div class="container">
 
-    <p>📍 Chandrapur-8, Santapur, Rautahat, Gaur Road</p>
+<h2 class="section-title">
+📞 Contact Us
+</h2>
 
-    <p>📞 9700007714</p>
+<div class="contact-box">
 
-    <p>
-        Stylish Poster of football player Ronaldo,Messi,Neymar
-        Want to buy the oder us today.
-    </p>
+<h3>
+Santapur Poster Hub
+</h3>
 
-    <a
-        class="whatsapp"
-        href="https://wa.me/9779700007714"
-        target="_blank">
-        💬 WhatsApp: 9700007714
-    </a>
+<p>
+📍 Chandrapur-8, Santapur, Rautahat
+</p>
+
+<p>
+📱 WhatsApp: 9700007714
+</p>
+
+<p>
+💰 Starting Price: Rs. 49
+</p>
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- FOOTER -->
 
 <footer>
-    © 2026 Santapur Poster Hub
-    <br>
-    All Rights Reserved
+
+© 2026 Santapur Poster Hub
+<br>
+All Rights Reserved.
+
 </footer>
 
 </div>
 
 
-<!-- ================= JAVASCRIPT ================= -->
+
+<!-- =================================
+     INTERNAL DASHBOARD
+================================= -->
+
+<section id="dashboard">
+
+<div class="dashboard-container">
+
+
+<div class="dashboard-header">
+
+<h2>
+👋 Welcome, <span id="welcomeName">
+Customer
+</span>
+</h2>
+
+<button
+class="logout-btn"
+onclick="logout()">
+
+🚪 Logout
+
+</button>
+
+</div>
+
+
+
+<div class="dashboard-grid">
+
+
+<div class="dash-card">
+
+<span>🛍️</span>
+
+<h3>
+Place Order
+</h3>
+
+<button onclick="showInternal('orderBox')">
+Order Now
+</button>
+
+</div>
+
+
+
+<div class="dash-card">
+
+<span>📦</span>
+
+<h3>
+My Orders
+</h3>
+
+<button onclick="showInternal('ordersBox')">
+View Orders
+</button>
+
+</div>
+
+
+
+<div class="dash-card">
+
+<span>👤</span>
+
+<h3>
+My Profile
+</h3>
+
+<button onclick="showInternal('profileBox')">
+View Profile
+</button>
+
+</div>
+
+
+</div>
+
+
+
+<!-- ORDER BOX -->
+
+<div
+class="internal"
+id="orderBox">
+
+<h2>
+🛒 Place Your Order
+</h2>
+
+<form onsubmit="placeOrder(event)">
+
+<input
+id="orderName"
+type="text"
+placeholder="Your Name"
+required
+>
+
+<input
+id="orderPhone"
+type="tel"
+placeholder="Phone Number"
+required
+>
+
+<select id="productName" required>
+
+<option value="">
+Select Poster
+</option>
+
+<option>
+Football Poster - Rs.99
+</option>
+
+<option>
+Small Poster - Rs.49
+</option>
+
+<option>
+Custom Poster - Rs.149
+</option>
+
+<option>
+Premium Poster - Rs.199
+</option>
+
+</select>
+
+
+<textarea
+id="orderDetails"
+placeholder="Write poster details..."
+></textarea>
+
+
+<input
+id="orderAddress"
+type="text"
+placeholder="Delivery Address"
+required
+>
+
+
+<button
+class="submit-btn"
+type="submit">
+
+✅ Confirm Order
+
+</button>
+
+</form>
+
+</div>
+
+
+
+<!-- ORDERS BOX -->
+
+<div
+class="internal"
+id="ordersBox">
+
+<h2>
+📦 My Orders
+</h2>
+
+<div id="ordersList">
+
+<p>
+You have no orders yet.
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- PROFILE BOX -->
+
+<div
+class="internal"
+id="profileBox">
+
+<div class="profile">
+
+<div class="profile-icon">
+👤
+</div>
+
+<h2 id="profileName">
+Customer
+</h2>
+
+<p id="profileEmail">
+Email
+</p>
+
+<p>
+Account Status: ✅ Active
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =================================
+     LOGIN MODAL
+================================= -->
+
+<div
+class="modal"
+id="loginModal">
+
+<div class="modal-box">
+
+<span
+class="close"
+onclick="closeModals()">
+×
+</span>
+
+<h2>
+🔐 Login
+</h2>
+
+<input
+id="loginEmail"
+type="email"
+placeholder="Email"
+>
+
+<input
+id="loginPassword"
+type="password"
+placeholder="Password"
+>
+
+<button
+class="submit-btn"
+onclick="login()">
+
+Login
+
+</button>
+
+<div
+class="switch"
+onclick="openSignup()">
+
+Don't have an account?
+<b>Sign Up</b>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- =================================
+     SIGNUP MODAL
+================================= -->
+
+<div
+class="modal"
+id="signupModal">
+
+<div class="modal-box">
+
+<span
+class="close"
+onclick="closeModals()">
+×
+</span>
+
+<h2>
+📝 Create Account
+</h2>
+
+<input
+id="signupName"
+type="text"
+placeholder="Full Name"
+>
+
+<input
+id="signupEmail"
+type="email"
+placeholder="Email"
+>
+
+<input
+id="signupPassword"
+type="password"
+placeholder="Create Password"
+>
+
+<input
+id="signupConfirm"
+type="password"
+placeholder="Confirm Password"
+>
+
+<button
+class="submit-btn"
+onclick="signup()">
+
+Create Account
+
+</button>
+
+<div
+class="switch"
+onclick="openLogin()">
+
+Already have an account?
+<b>Login</b>
+
+</div>
+
+</div>
+
+</div>
+
+
 
 <script>
 
-/* LOGIN */
+/* =================================
+   LOCAL STORAGE
+================================= */
 
-function login(){
+function getUsers(){
 
-    let username =
-        document.getElementById("username").value;
-
-    let password =
-        document.getElementById("password").value;
-
-    /*
-       CHANGE THESE IF YOU WANT
-       YOUR OWN USERNAME/PASSWORD
-    */
-
-    if(username === "Neymar" && password === "1111"){
-
-        document.getElementById("loginPage").style.display="none";
-
-        document.getElementById("website").style.display="block";
-
-        document.getElementById("error").style.display="none";
-
-        window.scrollTo(0,0);
-
-    }else{
-
-        document.getElementById("error").style.display="block";
-
-    }
+    return JSON.parse(
+        localStorage.getItem("posterUsers")
+    ) || [];
 
 }
 
 
-/* LOGOUT */
+function getOrders(){
 
-function logout(){
-
-    let confirmLogout =
-        confirm("Are you sure you want to logout?");
-
-    if(confirmLogout){
-
-        document.getElementById("website").style.display="none";
-
-        document.getElementById("loginPage").style.display="flex";
-
-        document.getElementById("username").value="";
-
-        document.getElementById("password").value="";
-
-    }
+    return JSON.parse(
+        localStorage.getItem("posterOrders")
+    ) || [];
 
 }
 
 
-/* WHATSAPP ORDER */
+/* =================================
+   NAVIGATION
+================================= */
 
-function sendOrder(){
+function scrollToSection(id){
+
+    document.getElementById(id)
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =================================
+   MODALS
+================================= */
+
+function openLogin(){
+
+    closeModals();
+
+    document.getElementById(
+        "loginModal"
+    ).style.display="flex";
+
+}
+
+
+function openSignup(){
+
+    closeModals();
+
+    document.getElementById(
+        "signupModal"
+    ).style.display="flex";
+
+}
+
+
+function closeModals(){
+
+    document.getElementById(
+        "loginModal"
+    ).style.display="none";
+
+    document.getElementById(
+        "signupModal"
+    ).style.display="none";
+
+}
+
+
+/* =================================
+   SIGN UP
+================================= */
+
+function signup(){
 
     let name =
-        document.getElementById("customerName").value;
+    document.getElementById(
+        "signupName"
+    ).value.trim();
 
-    let phone =
-        document.getElementById("customerPhone").value;
 
-    let details =
-        document.getElementById("posterDetails").value;
-let choose=getElementById("Choose poster").value;
-    if(name === "" || phone === "" || details === ""){
+    let email =
+    document.getElementById(
+        "signupEmail"
+    ).value.trim().toLowerCase();
 
-        alert("Please fill all order details!");
+
+    let password =
+    document.getElementById(
+        "signupPassword"
+    ).value;
+
+
+    let confirm =
+    document.getElementById(
+        "signupConfirm"
+    ).value;
+
+
+    if(!name || !email || !password || !confirm){
+
+        alert(
+            "Please fill all fields."
+        );
 
         return;
     }
 
-    let message =
-        "Hello Santapur Poster Hub! 👋%0A%0A" +
-        "I want to order a poster.%0A%0A" +
-        "Name: " + name + "%0A" +
-        "Phone: " + phone + "%0A" +
-        "Poster Details: " + details;
 
-    window.open(
-        "https://wa.me/9779700007714?text=" + message,
-        "_blank"
+    if(password !== confirm){
+
+        alert(
+            "Passwords do not match."
+        );
+
+        return;
+    }
+
+
+    if(password.length < 6){
+
+        alert(
+            "Password must be at least 6 characters."
+        );
+
+        return;
+    }
+
+
+    let users = getUsers();
+
+
+    let exists =
+    users.find(
+        user => user.email === email
+    );
+
+
+    if(exists){
+
+        alert(
+            "This email is already registered."
+        );
+
+        return;
+    }
+
+
+    users.push({
+
+        name:name,
+
+        email:email,
+
+        password:password
+
+    });
+
+
+    localStorage.setItem(
+        "posterUsers",
+        JSON.stringify(users)
+    );
+
+
+    localStorage.setItem(
+        "loggedUser",
+        email
+    );
+
+
+    alert(
+        "🎉 Account created successfully!"
+    );
+
+
+    closeModals();
+
+    showDashboard();
+
+}
+
+
+/* =================================
+   LOGIN
+================================= */
+
+function login(){
+
+    let email =
+    document.getElementById(
+        "loginEmail"
+    ).value.trim().toLowerCase();
+
+
+    let password =
+    document.getElementById(
+        "loginPassword"
+    ).value;
+
+
+    let users = getUsers();
+
+
+    let user =
+    users.find(
+        u =>
+        u.email === email &&
+        u.password === password
+    );
+
+
+    if(!user){
+
+        alert(
+            "❌ Incorrect email or password."
+        );
+
+        return;
+    }
+
+
+    localStorage.setItem(
+        "loggedUser",
+        email
+    );
+
+
+    alert(
+        "✅ Login successful!"
+    );
+
+
+    closeModals();
+
+    showDashboard();
+
+}
+
+
+/* =================================
+   REQUIRE LOGIN
+================================= */
+
+function requireLogin(){
+
+    let logged =
+    localStorage.getItem(
+        "loggedUser"
+    );
+
+
+    if(!logged){
+
+        alert(
+            "🔐 Please login or create an account to order."
+        );
+
+        openLogin();
+
+        return;
+    }
+
+
+    showDashboard();
+
+    showInternal("orderBox");
+
+}
+
+
+/* =================================
+   SHOW DASHBOARD
+================================= */
+
+function showDashboard(){
+
+    let email =
+    localStorage.getItem(
+        "loggedUser"
+    );
+
+
+    if(!email){
+
+        return;
+    }
+
+
+    let users = getUsers();
+
+
+    let user =
+    users.find(
+        u => u.email === email
+    );
+
+
+    if(!user){
+
+        logout();
+
+        return;
+    }
+
+
+    document.getElementById(
+        "publicWebsite"
+    ).style.display="none";
+
+
+    document.getElementById(
+        "dashboard"
+    ).style.display="block";
+
+
+    document.getElementById(
+        "welcomeName"
+    ).textContent=user.name;
+
+
+    document.getElementById(
+        "profileName"
+    ).textContent=user.name;
+
+
+    document.getElementById(
+        "profileEmail"
+    ).textContent=user.email;
+
+
+    loadOrders();
+
+}
+
+
+/* =================================
+   INTERNAL NAVIGATION
+================================= */
+
+function showInternal(id){
+
+    document.querySelectorAll(
+        ".internal"
+    ).forEach(box => {
+
+        box.style.display="none";
+
+    });
+
+
+    document.getElementById(
+        id
+    ).style.display="block";
+
+
+    document.getElementById(
+        id
+    ).scrollIntoView({
+        behavior:"smooth"
+    });
+
+
+    if(id === "ordersBox"){
+
+        loadOrders();
+
+    }
+
+}
+
+
+/* =================================
+   PLACE ORDER
+================================= */
+
+function placeOrder(event){
+
+    event.preventDefault();
+
+
+    let email =
+    localStorage.getItem(
+        "loggedUser"
+    );
+
+
+    if(!email){
+
+        alert(
+            "Please login first."
+        );
+
+        return;
+    }
+
+
+    let name =
+    document.getElementById(
+        "orderName"
+    ).value;
+
+
+    let phone =
+    document.getElementById(
+        "orderPhone"
+    ).value;
+
+
+    let product =
+    document.getElementById(
+        "productName"
+    ).value;
+
+
+    let details =
+    document.getElementById(
+        "orderDetails"
+    ).value;
+
+
+    let address =
+    document.getElementById(
+        "orderAddress"
+    ).value;
+
+
+    let orders = getOrders();
+
+
+    let newOrder = {
+
+        id:
+        "ORD" +
+        Date.now(),
+
+        email:email,
+
+        name:name,
+
+        phone:phone,
+
+        product:product,
+
+        details:details,
+
+        address:address,
+
+        status:"Pending",
+
+        date:
+        new Date().toLocaleString()
+
+    };
+
+
+    orders.push(newOrder);
+
+
+    localStorage.setItem(
+        "posterOrders",
+        JSON.stringify(orders)
+    );
+
+
+    alert(
+        "🎉 Order placed successfully!"
+    );
+
+
+    document.querySelector(
+        "#orderBox form"
+    ).reset();
+
+
+    showInternal(
+        "ordersBox"
     );
 
 }
+
+
+/* =================================
+   LOAD ORDERS
+================================= */
+
+function loadOrders(){
+
+    let email =
+    localStorage.getItem(
+        "loggedUser"
+    );
+
+
+    let orders =
+    getOrders().filter(
+        order =>
+        order.email === email
+    );
+
+
+    let list =
+    document.getElementById(
+        "ordersList"
+    );
+
+
+    if(orders.length === 0){
+
+        list.innerHTML =
+        "<p>You have no orders yet.</p>";
+
+        return;
+    }
+
+
+    list.innerHTML="";
+
+
+    orders.reverse().forEach(
+        order => {
+
+        let div =
+        document.createElement(
+            "div"
+        );
+
+
+        div.className="order-item";
+
+
+        div.innerHTML=`
+
+            <h3>
+            📦 ${order.product}
+            </h3>
+
+            <p>
+            Order ID: ${order.id}
+            </p>
+
+            <p>
+            Name: ${order.name}
+            </p>
+
+            <p>
+            Phone: ${order.phone}
+            </p>
+
+            <p>
+            Address: ${order.address}
+            </p>
+
+            <p>
+            Status: 🟡 ${order.status}
+            </p>
+
+            <p>
+            Date: ${order.date}
+            </p>
+
+        `;
+
+
+        list.appendChild(div);
+
+    });
+
+}
+
+
+/* =================================
+   LOGOUT
+================================= */
+
+function logout(){
+
+    localStorage.removeItem(
+        "loggedUser"
+    );
+
+
+    document.getElementById(
+        "dashboard"
+    ).style.display="none";
+
+
+    document.getElementById(
+        "publicWebsite"
+    ).style.display="block";
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+
+    alert(
+        "You have been logged out."
+    );
+
+}
+
+
+/* =================================
+   PAGE LOAD
+================================= */
+
+window.onload=function(){
+
+    let logged =
+    localStorage.getItem(
+        "loggedUser"
+    );
+
+
+    if(logged){
+
+        showDashboard();
+
+    }
+
+};
 
 </script>
 
 </body>
 </html>
+    
+                            
