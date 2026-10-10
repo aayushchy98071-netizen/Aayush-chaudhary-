@@ -2,1929 +2,766 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Santapur Poster Hub</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ashok Fancy Admin</title>
 
 <style>
-
-/* =========================
-   BASIC
-========================= */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
+* {
+  box-sizing: border-box;
 }
 
-html{
-    scroll-behavior:smooth;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0c0c0c;
+  color: white;
 }
 
-body{
-    background:#050816;
-    color:white;
-    min-height:100vh;
+header {
+  background: #171717;
+  border-bottom: 2px solid #d9ad48;
+  padding: 18px;
+  text-align: center;
 }
 
-button{
-    cursor:pointer;
+header h1 {
+  margin: 0;
+  color: #f5cb65;
 }
 
-a{
-    text-decoration:none;
-    color:inherit;
+header p {
+  color: #ccc;
+  margin-bottom: 0;
 }
 
-
-/* =========================
-   HEADER
-========================= */
-
-header{
-    position:sticky;
-    top:0;
-    z-index:1000;
-
-    background:rgba(5,8,22,.92);
-    backdrop-filter:blur(15px);
-
-    border-bottom:1px solid #26304d;
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 15px;
 }
 
-.navbar{
-    max-width:1200px;
-    margin:auto;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    padding:15px 20px;
+button, .navlink {
+  border: 0;
+  border-radius: 7px;
+  padding: 11px 15px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
 }
 
-.logo{
-    font-size:22px;
-    font-weight:bold;
-    color:#00eaff;
-
-    text-shadow:
-    0 0 10px #00eaff;
+.gold {
+  background: #f5cb65;
+  color: #111;
 }
 
-.nav-buttons{
-    display:flex;
-    gap:8px;
+.dark {
+  background: #292929;
+  color: white;
 }
 
-.nav-buttons button{
-    padding:9px 14px;
-    border:0;
-    border-radius:20px;
-
-    background:#111a35;
-    color:white;
+.green {
+  background: #168b49;
+  color: white;
 }
 
-.nav-buttons button:hover{
-    background:#00eaff;
-    color:#001018;
+.red {
+  background: #b82e35;
+  color: white;
 }
 
-
-/* =========================
-   HERO
-========================= */
-
-.hero{
-    min-height:600px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    text-align:center;
-
-    padding:60px 20px;
-
-    background:
-    radial-gradient(circle at center,
-    rgba(0,234,255,.15),
-    transparent 40%);
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 16px;
 }
 
-.hero-content{
-    max-width:800px;
+.panel {
+  background: #181818;
+  border: 1px solid #393939;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
 }
 
-.hero h1{
-    font-size:55px;
-    margin-bottom:20px;
-
-    color:#00eaff;
-
-    text-shadow:
-    0 0 10px #00eaff,
-    0 0 30px #00eaff;
+h2 {
+  color: #f5cb65;
+  margin-top: 0;
 }
 
-.hero p{
-    font-size:20px;
-    color:#b9c2d9;
-    margin-bottom:30px;
+label {
+  display: block;
+  margin-top: 14px;
+  margin-bottom: 6px;
+  color: #eee;
 }
 
-.main-btn{
-    padding:15px 30px;
-
-    border:none;
-    border-radius:30px;
-
-    background:linear-gradient(
-        90deg,
-        #00eaff,
-        #008cff
-    );
-
-    color:white;
-    font-weight:bold;
-    font-size:16px;
-
-    box-shadow:0 0 20px rgba(0,234,255,.4);
+input, textarea, select {
+  width: 100%;
+  padding: 13px;
+  background: #292929;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 7px;
+  font-size: 16px;
 }
 
-.main-btn:hover{
-    transform:scale(1.05);
+input[type="file"] {
+  font-size: 14px;
 }
 
-
-/* =========================
-   SECTION
-========================= */
-
-section{
-    padding:60px 20px;
+.preview {
+  display: block;
+  max-width: 180px;
+  max-height: 180px;
+  margin-top: 12px;
+  border-radius: 9px;
+  object-fit: contain;
 }
 
-.container{
-    max-width:1100px;
-    margin:auto;
+.hint {
+  color: #bbb;
+  font-size: 13px;
+  line-height: 1.6;
 }
 
-.section-title{
-    text-align:center;
-    margin-bottom:35px;
-
-    font-size:32px;
-    color:#00eaff;
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
 }
 
-
-/* =========================
-   PRODUCTS
-========================= */
-
-.products{
-    display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit,minmax(230px,1fr));
-
-    gap:25px;
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
 }
 
-.product{
-    background:
-    linear-gradient(
-        145deg,
-        #101a35,
-        #080d20
-    );
-
-    border:1px solid #263454;
-
-    border-radius:20px;
-
-    padding:25px;
-
-    text-align:center;
-
-    transition:.3s;
+.stat {
+  background: #202020;
+  padding: 18px;
+  border-radius: 10px;
+  border: 1px solid #3b3424;
 }
 
-.product:hover{
-    transform:translateY(-8px);
-
-    box-shadow:
-    0 10px 35px
-    rgba(0,234,255,.15);
+.stat strong {
+  display: block;
+  color: #f5cb65;
+  font-size: 25px;
+  margin-top: 8px;
 }
 
-.product-icon{
-    font-size:60px;
-    margin-bottom:15px;
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
 }
 
-.product h3{
-    color:#00eaff;
-    margin-bottom:10px;
+.card {
+  background: #191919;
+  border: 1px solid #3a3a3a;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-.product p{
-    color:#aeb8d0;
+.card img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  background: #282828;
+  display: block;
 }
 
-.price{
-    font-size:28px;
-    font-weight:bold;
-
-    margin:20px 0;
-
-    color:#00ffae;
+.cardinfo {
+  padding: 12px;
 }
 
-.order-btn{
-    border:0;
-
-    padding:12px 25px;
-
-    border-radius:25px;
-
-    background:#ff007f;
-    color:white;
-
-    font-weight:bold;
+.card h3 {
+  margin: 0 0 10px;
+  overflow-wrap: anywhere;
 }
 
-
-/* =========================
-   ABOUT
-========================= */
-
-.about{
-    background:#080d20;
+.price {
+  color: #f5cb65;
+  font-size: 18px;
+  font-weight: bold;
 }
 
-.about-box{
-    max-width:800px;
-    margin:auto;
-
-    text-align:center;
-
-    color:#b8c0d3;
-
-    line-height:1.8;
+.cardbuttons {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin-top: 12px;
 }
 
-
-/* =========================
-   CONTACT
-========================= */
-
-.contact-box{
-    text-align:center;
-
-    background:#101a35;
-
-    border-radius:20px;
-
-    padding:35px;
+.cardbuttons button {
+  flex: 1;
+  padding: 10px 8px;
 }
 
-.contact-box h3{
-    color:#00eaff;
-    margin-bottom:15px;
+.empty {
+  text-align: center;
+  color: #bbb;
+  padding: 25px 5px;
 }
 
-.contact-box p{
-    margin:8px;
-    color:#c3cadc;
+footer {
+  padding: 25px;
+  text-align: center;
+  background: #171717;
+  color: #bbb;
+  line-height: 1.8;
 }
 
-
-/* =========================
-   DASHBOARD
-========================= */
-
-#dashboard{
-    display:none;
-
-    min-height:100vh;
-
-    background:
-    radial-gradient(
-        circle at top,
-        #101d3f,
-        #050816 55%
-    );
-
-    padding:40px 20px;
+footer a {
+  color: #f5cb65;
 }
 
-.dashboard-container{
-    max-width:1100px;
-    margin:auto;
+.hidden {
+  display: none !important;
 }
 
-.dashboard-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+@media (max-width: 700px) {
+  .products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
 
-    margin-bottom:30px;
+  .card img {
+    height: 165px;
+  }
+
+  .cardinfo {
+    padding: 9px;
+  }
+
+  .cardbuttons button {
+    font-size: 12px;
+  }
+
+  main {
+    padding: 10px;
+  }
+
+  .panel {
+    padding: 15px;
+  }
 }
 
-.dashboard-header h2{
-    color:#00eaff;
+@media (max-width: 360px) {
+  .products {
+    grid-template-columns: 1fr;
+  }
+
+  .card img {
+    height: 230px;
+  }
 }
-
-.logout-btn{
-    padding:10px 18px;
-
-    border:0;
-    border-radius:20px;
-
-    background:#ff315c;
-    color:white;
-}
-
-
-/* =========================
-   DASHBOARD CARDS
-========================= */
-
-.dashboard-grid{
-    display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit,minmax(200px,1fr));
-
-    gap:20px;
-}
-
-.dash-card{
-    padding:25px;
-
-    background:#101a35;
-
-    border:1px solid #29375c;
-
-    border-radius:18px;
-
-    text-align:center;
-}
-
-.dash-card span{
-    font-size:40px;
-}
-
-.dash-card h3{
-    margin:12px 0;
-    color:#00eaff;
-}
-
-.dash-card button{
-    padding:10px 18px;
-
-    border:0;
-    border-radius:20px;
-
-    background:#00eaff;
-    color:#001018;
-
-    font-weight:bold;
-}
-
-
-/* =========================
-   INTERNAL ORDER
-========================= */
-
-.internal{
-    margin-top:30px;
-
-    display:none;
-
-    background:#101a35;
-
-    border:1px solid #29375c;
-
-    border-radius:20px;
-
-    padding:30px;
-}
-
-.internal h2{
-    color:#00eaff;
-    margin-bottom:20px;
-}
-
-input,
-select,
-textarea{
-
-    width:100%;
-
-    padding:14px;
-
-    margin:8px 0;
-
-    border-radius:10px;
-
-    border:1px solid #354368;
-
-    background:#070c1d;
-
-    color:white;
-
-    outline:none;
-}
-
-textarea{
-    min-height:100px;
-    resize:vertical;
-}
-
-.submit-btn{
-    width:100%;
-
-    padding:14px;
-
-    margin-top:10px;
-
-    border:0;
-    border-radius:10px;
-
-    background:#00eaff;
-
-    color:#001018;
-
-    font-weight:bold;
-}
-
-
-/* =========================
-   ORDERS
-========================= */
-
-.order-item{
-    background:#080d20;
-
-    padding:18px;
-
-    border-radius:12px;
-
-    margin:10px 0;
-
-    border-left:4px solid #00eaff;
-}
-
-.order-item h3{
-    color:#00eaff;
-}
-
-.order-item p{
-    margin:5px 0;
-    color:#c2c9da;
-}
-
-
-/* =========================
-   PROFILE
-========================= */
-
-.profile{
-    text-align:center;
-}
-
-.profile-icon{
-    font-size:70px;
-    margin-bottom:15px;
-}
-
-.profile h2{
-    color:#00eaff;
-}
-
-.profile p{
-    color:#b9c2d9;
-    margin:8px;
-}
-
-
-/* =========================
-   MODAL
-========================= */
-
-.modal{
-
-    display:none;
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:2000;
-
-    background:rgba(0,0,0,.8);
-
-    justify-content:center;
-    align-items:center;
-
-    padding:20px;
-}
-
-.modal-box{
-
-    width:100%;
-    max-width:420px;
-
-    background:#101a35;
-
-    border:1px solid #34456f;
-
-    border-radius:20px;
-
-    padding:30px;
-
-    position:relative;
-
-    box-shadow:
-    0 0 50px
-    rgba(0,234,255,.15);
-}
-
-.modal-box h2{
-    text-align:center;
-
-    color:#00eaff;
-
-    margin-bottom:20px;
-}
-
-.close{
-
-    position:absolute;
-
-    right:18px;
-    top:12px;
-
-    font-size:28px;
-
-    color:#ff315c;
-
-    cursor:pointer;
-}
-
-.switch{
-    text-align:center;
-
-    margin-top:18px;
-
-    color:#00eaff;
-
-    cursor:pointer;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-
-    text-align:center;
-
-    padding:25px;
-
-    background:#03050d;
-
-    color:#727d98;
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:600px){
-
-    .navbar{
-        flex-direction:column;
-        gap:12px;
-    }
-
-    .hero h1{
-        font-size:38px;
-    }
-
-    .hero p{
-        font-size:17px;
-    }
-
-    .dashboard-header{
-        flex-direction:column;
-        gap:15px;
-    }
-
-    .nav-buttons{
-        flex-wrap:wrap;
-        justify-content:center;
-    }
-
-}
-
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =================================
-     PUBLIC WEBSITE
-================================= -->
-
-<div id="publicWebsite">
-
-
 <header>
-
-<div class="navbar">
-
-<div class="logo">
-🔥 SANTAPUR POSTER HUB
-</div>
-
-<div class="nav-buttons">
-
-<button onclick="scrollToSection('home')">
-Home
-</button>
-
-<button onclick="scrollToSection('products')">
-Products
-</button>
-
-<button onclick="scrollToSection('about')">
-About
-</button>
-
-<button onclick="scrollToSection('contact')">
-Contact
-</button>
-
-<button onclick="openLogin()">
-Login
-</button>
-
-<button onclick="openSignup()">
-Sign Up
-</button>
-
-</div>
-
-</div>
-
+  <h1>✦ ASHOK FANCY ✦</h1>
+  <p>Clothing Store • Admin Dashboard</p>
 </header>
 
-
-
-<!-- HERO -->
-
-<section class="hero" id="home">
-
-<div class="hero-content">
-
-<h1>
-SANTAPUR<br>
-POSTER HUB
-</h1>
-
-<p>
-Premium Football Player Posters ⚽
-<br>
-Messi • Ronaldo • Neymar • Custom Designs
-</p>
-
-<button
-class="main-btn"
-onclick="scrollToSection('products')">
-
-🛍️ View Posters
-
-</button>
-
-</div>
-
-</section>
-
-
-
-<!-- PRODUCTS -->
-
-<section id="products">
-
-<div class="container">
-
-<h2 class="section-title">
-🔥 Our Products
-</h2>
-
-
-<div class="products">
-
-
-<div class="product">
-
-<div class="product-icon">
-⚽
-</div>
-
-<h3>
-Football Poster
-</h3>
-
-<p>
-Premium quality football poster.
-</p>
-
-<div class="price">
-Rs. 99
-</div>
-
-<button
-class="order-btn"
-onclick="requireLogin()">
-
-Order Now
-
-</button>
-
-</div>
-
-
-
-<div class="product">
-
-<div class="product-icon">
-⭐
-</div>
-
-<h3>
-Small Poster
-</h3>
-
-<p>
-Small size affordable poster.
-</p>
-
-<div class="price">
-Rs. 49
-</div>
-
-<button
-class="order-btn"
-onclick="requireLogin()">
-
-Order Now
-
-</button>
-
-</div>
-
-
-
-<div class="product">
-
-<div class="product-icon">
-🔥
-</div>
-
-<h3>
-Custom Poster
-</h3>
-
-<p>
-Your name and favorite player.
-</p>
-
-<div class="price">
-Rs. 149
-</div>
-
-<button
-class="order-btn"
-onclick="requireLogin()">
-
-Order Now
-
-</button>
-
-</div>
-
-
-
-<div class="product">
-
-<div class="product-icon">
-🏆
-</div>
-
-<h3>
-Premium Poster
-</h3>
-
-<p>
-High quality premium design.
-</p>
-
-<div class="price">
-Rs. 199
-</div>
-
-<button
-class="order-btn"
-onclick="requireLogin()">
-
-Order Now
-
-</button>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- ABOUT -->
-
-<section class="about" id="about">
-
-<div class="container">
-
-<h2 class="section-title">
-About Us
-</h2>
-
-<div class="about-box">
-
-<p>
-
-Welcome to <b>Santapur Poster Hub</b>.
-
-We create stylish football player
-posters including Messi, Ronaldo,
-Neymar and custom designs.
-
-You can browse our website without
-creating an account.
-
-To place an order, simply create an
-account or login.
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- CONTACT -->
-
-<section id="contact">
-
-<div class="container">
-
-<h2 class="section-title">
-📞 Contact Us
-</h2>
-
-<div class="contact-box">
-
-<h3>
-Santapur Poster Hub
-</h3>
-
-<p>
-📍 Chandrapur-8, Santapur, Rautahat
-</p>
-
-<p>
-📱 WhatsApp: 9700007714
-</p>
-
-<p>
-💰 Starting Price: Rs. 49
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
+<nav>
+  <a class="navlink dark" href="#dashboard">Dashboard</a>
+  <a class="navlink dark" href="#editor">Manage Products</a>
+  <a class="navlink dark" href="#catalog">Store Preview</a>
+</nav>
+
+<main>
+
+  <section class="stats" id="dashboard">
+    <div class="stat">
+      Total Products
+      <strong id="totalProducts">0</strong>
+    </div>
+    <div class="stat">
+      Store
+      <strong style="font-size:20px">Ashok Fancy</strong>
+    </div>
+  </section>
+
+  <section class="panel" id="editor">
+    <h2 id="formTitle">➕ Add New Product</h2>
+
+    <form id="productForm">
+
+      <label for="productName">Product Name *</label>
+      <input id="productName"
+             type="text"
+             placeholder="Example: Black T-Shirt"
+             maxlength="80"
+             required>
+
+      <label for="productPrice">Price in NPR (Rs.) *</label>
+      <input id="productPrice"
+             type="number"
+             min="0"
+             max="10000000"
+             step="0.01"
+             placeholder="Example: 999"
+             required>
+
+      <label for="productCategory">Category</label>
+      <select id="productCategory">
+        <option>Pant</option>
+        <option>T-Shirts</option>
+        <option>Shirts</option>
+        <option>Jeans</option>
+        <option>Jackets</option>
+        <option>Kurti & Kurta</option>
+        <option>Women's Wear</option>
+        <option>Men's Wear</option>
+        <option>Kids Wear</option>
+        <option>Other</option>
+      </select>
+
+      <label for="productDescription">Description</label>
+      <textarea id="productDescription"
+                rows="3"
+                maxlength="500"
+                placeholder="Describe the product, available sizes, colors..."></textarea>
+
+      <label for="productImage">Upload Product Image *</label>
+      <input id="productImage"
+             type="file"
+             accept="image/*">
+
+      <p class="hint">
+        Choose a photo from your phone gallery.
+        Images are resized to help save storage space.
+        Keep each image reasonably small.
+      </p>
+
+      <img id="imagePreview"
+           class="preview hidden"
+           alt="Product preview">
+
+      <div class="actions">
+        <button type="submit" class="gold" id="saveButton">
+          Save Product
+        </button>
+
+        <button type="button"
+                class="dark hidden"
+                id="cancelButton"
+                onclick="resetForm()">
+          Cancel Edit
+        </button>
+      </div>
+
+    </form>
+  </section>
+
+  <section id="catalog">
+    <h2>🛍️ Your Clothing Products</h2>
+    <p class="hint">
+      These products appear in the store preview below.
+      Add products using the form above.
+    </p>
+
+    <div id="productGrid" class="products"></div>
+
+    <p id="emptyMessage" class="empty">
+      No products yet. Add your first clothing product above!
+    </p>
+  </section>
+
+</main>
 
 <footer>
-
-© 2026 Santapur Poster Hub
-<br>
-All Rights Reserved.
-
+  <strong>Ashok Fancy</strong><br>
+  Online Delivery Available 🚚<br>
+  WhatsApp:
+  <a href="https://wa.me/9779700007714">
+    9700007714
+  </a><br>
+  TikTok:
+  <a href="https://www.tiktok.com/@ashokfancy77">
+    @ashokfancy77
+  </a><br>
+  © 2026 Ashok Fancy
 </footer>
 
-</div>
-
-
-
-<!-- =================================
-     INTERNAL DASHBOARD
-================================= -->
-
-<section id="dashboard">
-
-<div class="dashboard-container">
-
-
-<div class="dashboard-header">
-
-<h2>
-👋 Welcome, <span id="welcomeName">
-Customer
-</span>
-</h2>
-
-<button
-class="logout-btn"
-onclick="logout()">
-
-🚪 Logout
-
-</button>
-
-</div>
-
-
-
-<div class="dashboard-grid">
-
-
-<div class="dash-card">
-
-<span>🛍️</span>
-
-<h3>
-Place Order
-</h3>
-
-<button onclick="showInternal('orderBox')">
-Order Now
-</button>
-
-</div>
-
-
-
-<div class="dash-card">
-
-<span>📦</span>
-
-<h3>
-My Orders
-</h3>
-
-<button onclick="showInternal('ordersBox')">
-View Orders
-</button>
-
-</div>
-
-
-
-<div class="dash-card">
-
-<span>👤</span>
-
-<h3>
-My Profile
-</h3>
-
-<button onclick="showInternal('profileBox')">
-View Profile
-</button>
-
-</div>
-
-
-</div>
-
-
-
-<!-- ORDER BOX -->
-
-<div
-class="internal"
-id="orderBox">
-
-<h2>
-🛒 Place Your Order
-</h2>
-
-<form onsubmit="placeOrder(event)">
-
-<input
-id="orderName"
-type="text"
-placeholder="Your Name"
-required
->
-
-<input
-id="orderPhone"
-type="tel"
-placeholder="Phone Number"
-required
->
-
-<select id="productName" required>
-
-<option value="">
-Select Poster
-</option>
-
-<option>
-Football Poster - Rs.99
-</option>
-
-<option>
-Small Poster - Rs.49
-</option>
-
-<option>
-Custom Poster - Rs.149
-</option>
-
-<option>
-Premium Poster - Rs.199
-</option>
-
-</select>
-
-
-<textarea
-id="orderDetails"
-placeholder="Write poster details..."
-></textarea>
-
-
-<input
-id="orderAddress"
-type="text"
-placeholder="Delivery Address"
-required
->
-
-
-<button
-class="submit-btn"
-type="submit">
-
-✅ Confirm Order
-
-</button>
-
-</form>
-
-</div>
-
-
-
-<!-- ORDERS BOX -->
-
-<div
-class="internal"
-id="ordersBox">
-
-<h2>
-📦 My Orders
-</h2>
-
-<div id="ordersList">
-
-<p>
-You have no orders yet.
-</p>
-
-</div>
-
-</div>
-
-
-
-<!-- PROFILE BOX -->
-
-<div
-class="internal"
-id="profileBox">
-
-<div class="profile">
-
-<div class="profile-icon">
-👤
-</div>
-
-<h2 id="profileName">
-Customer
-</h2>
-
-<p id="profileEmail">
-Email
-</p>
-
-<p>
-Account Status: ✅ Active
-</p>
-
-</div>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-
-<!-- =================================
-     LOGIN MODAL
-================================= -->
-
-<div
-class="modal"
-id="loginModal">
-
-<div class="modal-box">
-
-<span
-class="close"
-onclick="closeModals()">
-×
-</span>
-
-<h2>
-🔐 Login
-</h2>
-
-<input
-id="loginEmail"
-type="email"
-placeholder="Email"
->
-
-<input
-id="loginPassword"
-type="password"
-placeholder="Password"
->
-
-<button
-class="submit-btn"
-onclick="login()">
-
-Login
-
-</button>
-
-<div
-class="switch"
-onclick="openSignup()">
-
-Don't have an account?
-<b>Sign Up</b>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- =================================
-     SIGNUP MODAL
-================================= -->
-
-<div
-class="modal"
-id="signupModal">
-
-<div class="modal-box">
-
-<span
-class="close"
-onclick="closeModals()">
-×
-</span>
-
-<h2>
-📝 Create Account
-</h2>
-
-<input
-id="signupName"
-type="text"
-placeholder="Full Name"
->
-
-<input
-id="signupEmail"
-type="email"
-placeholder="Email"
->
-
-<input
-id="signupPassword"
-type="password"
-placeholder="Create Password"
->
-
-<input
-id="signupConfirm"
-type="password"
-placeholder="Confirm Password"
->
-
-<button
-class="submit-btn"
-onclick="signup()">
-
-Create Account
-
-</button>
-
-<div
-class="switch"
-onclick="openLogin()">
-
-Already have an account?
-<b>Login</b>
-
-</div>
-
-</div>
-
-</div>
-
-
-
 <script>
+const STORAGE_KEY = "ashokFancyProductsV1";
 
-/* =================================
-   LOCAL STORAGE
-================================= */
+let products = [];
+let editingId = null;
+let selectedImage = "";
+let storageAvailable = true;
 
-function getUsers(){
+const form = document.getElementById("productForm");
+const nameInput = document.getElementById("productName");
+const priceInput = document.getElementById("productPrice");
+const categoryInput = document.getElementById("productCategory");
+const descriptionInput =
+  document.getElementById("productDescription");
+const imageInput = document.getElementById("productImage");
+const imagePreview = document.getElementById("imagePreview");
+const grid = document.getElementById("productGrid");
+const emptyMessage = document.getElementById("emptyMessage");
 
-    return JSON.parse(
-        localStorage.getItem("posterUsers")
-    ) || [];
+// Load saved products when the page opens.
+function loadProducts() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    products = saved ? JSON.parse(saved) : [];
 
-}
-
-
-function getOrders(){
-
-    return JSON.parse(
-        localStorage.getItem("posterOrders")
-    ) || [];
-
-}
-
-
-/* =================================
-   NAVIGATION
-================================= */
-
-function scrollToSection(id){
-
-    document.getElementById(id)
-    .scrollIntoView({
-        behavior:"smooth"
-    });
-
-}
-
-
-/* =================================
-   MODALS
-================================= */
-
-function openLogin(){
-
-    closeModals();
-
-    document.getElementById(
-        "loginModal"
-    ).style.display="flex";
-
-}
-
-
-function openSignup(){
-
-    closeModals();
-
-    document.getElementById(
-        "signupModal"
-    ).style.display="flex";
-
-}
-
-
-function closeModals(){
-
-    document.getElementById(
-        "loginModal"
-    ).style.display="none";
-
-    document.getElementById(
-        "signupModal"
-    ).style.display="none";
-
-}
-
-
-/* =================================
-   SIGN UP
-================================= */
-
-function signup(){
-
-    let name =
-    document.getElementById(
-        "signupName"
-    ).value.trim();
-
-
-    let email =
-    document.getElementById(
-        "signupEmail"
-    ).value.trim().toLowerCase();
-
-
-    let password =
-    document.getElementById(
-        "signupPassword"
-    ).value;
-
-
-    let confirm =
-    document.getElementById(
-        "signupConfirm"
-    ).value;
-
-
-    if(!name || !email || !password || !confirm){
-
-        alert(
-            "Please fill all fields."
-        );
-
-        return;
+    if (!Array.isArray(products)) {
+      products = [];
     }
 
-
-    if(password !== confirm){
-
-        alert(
-            "Passwords do not match."
-        );
-
-        return;
-    }
-
-
-    if(password.length < 6){
-
-        alert(
-            "Password must be at least 6 characters."
-        );
-
-        return;
-    }
-
-
-    let users = getUsers();
-
-
-    let exists =
-    users.find(
-        user => user.email === email
+    storageAvailable = true;
+  } catch (error) {
+    storageAvailable = false;
+    products = [];
+    alert(
+      "Browser storage could not be read. " +
+      "Try opening this file in a browser."
     );
+  }
 
+  renderProducts();
+}
 
-    if(exists){
-
-        alert(
-            "This email is already registered."
-        );
-
-        return;
-    }
-
-
-    users.push({
-
-        name:name,
-
-        email:email,
-
-        password:password
-
-    });
-
-
+// Save product information and images.
+function saveProducts() {
+  try {
     localStorage.setItem(
-        "posterUsers",
-        JSON.stringify(users)
+      STORAGE_KEY,
+      JSON.stringify(products)
     );
 
-
-    localStorage.setItem(
-        "loggedUser",
-        email
-    );
-
+    storageAvailable = true;
+    return true;
+  } catch (error) {
+    storageAvailable = false;
 
     alert(
-        "🎉 Account created successfully!"
+      "Storage is full or unavailable! " +
+      "Your changes were not saved. Remove large images " +
+      "or use online database storage."
     );
 
-
-    closeModals();
-
-    showDashboard();
-
+    return false;
+  }
 }
 
+// Resize uploaded photos before saving.
+function resizeImage(file) {
+  return new Promise((resolve, reject) => {
+    if (!file || !file.type.startsWith("image/")) {
+      reject(new Error("Please select a valid image."));
+      return;
+    }
 
-/* =================================
-   LOGIN
-================================= */
+    if (file.size > 10 * 1024 * 1024) {
+      reject(new Error("Please select an image under 10 MB."));
+      return;
+    }
 
-function login(){
+    const reader = new FileReader();
 
-    let email =
-    document.getElementById(
-        "loginEmail"
-    ).value.trim().toLowerCase();
-
-
-    let password =
-    document.getElementById(
-        "loginPassword"
-    ).value;
-
-
-    let users = getUsers();
-
-
-    let user =
-    users.find(
-        u =>
-        u.email === email &&
-        u.password === password
+    reader.onerror = () => reject(
+      new Error("Could not read the image.")
     );
 
+    reader.onload = () => {
+      const img = new Image();
 
-    if(!user){
+      img.onerror = () => reject(
+        new Error("Could not open the image.")
+      );
 
-        alert(
-            "❌ Incorrect email or password."
+      img.onload = () => {
+        const maxSide = 800;
+        const scale = Math.min(
+          1,
+          maxSide / Math.max(img.width, img.height)
         );
 
-        return;
-    }
+        const canvas = document.createElement("canvas");
 
-
-    localStorage.setItem(
-        "loggedUser",
-        email
-    );
-
-
-    alert(
-        "✅ Login successful!"
-    );
-
-
-    closeModals();
-
-    showDashboard();
-
-}
-
-
-/* =================================
-   REQUIRE LOGIN
-================================= */
-
-function requireLogin(){
-
-    let logged =
-    localStorage.getItem(
-        "loggedUser"
-    );
-
-
-    if(!logged){
-
-        alert(
-            "🔐 Please login or create an account to order."
+        canvas.width = Math.max(
+          1, Math.round(img.width * scale)
         );
 
-        openLogin();
-
-        return;
-    }
-
-
-    showDashboard();
-
-    showInternal("orderBox");
-
-}
-
-
-/* =================================
-   SHOW DASHBOARD
-================================= */
-
-function showDashboard(){
-
-    let email =
-    localStorage.getItem(
-        "loggedUser"
-    );
-
-
-    if(!email){
-
-        return;
-    }
-
-
-    let users = getUsers();
-
-
-    let user =
-    users.find(
-        u => u.email === email
-    );
-
-
-    if(!user){
-
-        logout();
-
-        return;
-    }
-
-
-    document.getElementById(
-        "publicWebsite"
-    ).style.display="none";
-
-
-    document.getElementById(
-        "dashboard"
-    ).style.display="block";
-
-
-    document.getElementById(
-        "welcomeName"
-    ).textContent=user.name;
-
-
-    document.getElementById(
-        "profileName"
-    ).textContent=user.name;
-
-
-    document.getElementById(
-        "profileEmail"
-    ).textContent=user.email;
-
-
-    loadOrders();
-
-}
-
-
-/* =================================
-   INTERNAL NAVIGATION
-================================= */
-
-function showInternal(id){
-
-    document.querySelectorAll(
-        ".internal"
-    ).forEach(box => {
-
-        box.style.display="none";
-
-    });
-
-
-    document.getElementById(
-        id
-    ).style.display="block";
-
-
-    document.getElementById(
-        id
-    ).scrollIntoView({
-        behavior:"smooth"
-    });
-
-
-    if(id === "ordersBox"){
-
-        loadOrders();
-
-    }
-
-}
-
-
-/* =================================
-   PLACE ORDER
-================================= */
-
-function placeOrder(event){
-
-    event.preventDefault();
-
-
-    let email =
-    localStorage.getItem(
-        "loggedUser"
-    );
-
-
-    if(!email){
-
-        alert(
-            "Please login first."
+        canvas.height = Math.max(
+          1, Math.round(img.height * scale)
         );
 
-        return;
-    }
+        const ctx = canvas.getContext("2d");
 
+        ctx.drawImage(
+          img, 0, 0, canvas.width, canvas.height
+        );
 
-    let name =
-    document.getElementById(
-        "orderName"
-    ).value;
+        resolve(
+          canvas.toDataURL("image/jpeg", 0.75)
+        );
+      };
 
-
-    let phone =
-    document.getElementById(
-        "orderPhone"
-    ).value;
-
-
-    let product =
-    document.getElementById(
-        "productName"
-    ).value;
-
-
-    let details =
-    document.getElementById(
-        "orderDetails"
-    ).value;
-
-
-    let address =
-    document.getElementById(
-        "orderAddress"
-    ).value;
-
-
-    let orders = getOrders();
-
-
-    let newOrder = {
-
-        id:
-        "ORD" +
-        Date.now(),
-
-        email:email,
-
-        name:name,
-
-        phone:phone,
-
-        product:product,
-
-        details:details,
-
-        address:address,
-
-        status:"Pending",
-
-        date:
-        new Date().toLocaleString()
-
+      img.src = reader.result;
     };
 
-
-    orders.push(newOrder);
-
-
-    localStorage.setItem(
-        "posterOrders",
-        JSON.stringify(orders)
-    );
-
-
-    alert(
-        "🎉 Order placed successfully!"
-    );
-
-
-    document.querySelector(
-        "#orderBox form"
-    ).reset();
-
-
-    showInternal(
-        "ordersBox"
-    );
-
+    reader.readAsDataURL(file);
+  });
 }
 
+// Display the chosen photo.
+imageInput.addEventListener("change", async function () {
+  const file = imageInput.files[0];
 
-/* =================================
-   LOAD ORDERS
-================================= */
+  if (!file) return;
 
-function loadOrders(){
+  try {
+    selectedImage = await resizeImage(file);
+    imagePreview.src = selectedImage;
+    imagePreview.classList.remove("hidden");
+  } catch (error) {
+    alert(error.message);
+    imageInput.value = "";
+    selectedImage = "";
+  }
+});
 
-    let email =
-    localStorage.getItem(
-        "loggedUser"
-    );
+// Add a new product or update an existing product.
+form.addEventListener("submit", async function (event) {
+  event.preventDefault();
 
+  const name = nameInput.value.trim();
+  const price = Number(priceInput.value);
+  const category = categoryInput.value;
+  const description = descriptionInput.value.trim();
 
-    let orders =
-    getOrders().filter(
-        order =>
-        order.email === email
-    );
+  if (!name || !Number.isFinite(price) ||
+      price < 0 || price > 10000000) {
+    alert("Enter a valid product name and price.");
+    return;
+  }
 
+  let image = selectedImage;
 
-    let list =
-    document.getElementById(
-        "ordersList"
-    );
-
-
-    if(orders.length === 0){
-
-        list.innerHTML =
-        "<p>You have no orders yet.</p>";
-
-        return;
+  if (imageInput.files[0]) {
+    try {
+      image = await resizeImage(imageInput.files[0]);
+    } catch (error) {
+      alert(error.message);
+      return;
     }
+  }
 
+  if (editingId === null && !image) {
+    alert("Please upload a product image.");
+    return;
+  }
 
-    list.innerHTML="";
+  if (!image && editingId !== null) {
+    const oldProduct = products.find(
+      p => p.id === editingId
+    );
+    image = oldProduct ? oldProduct.image : "";
+  }
 
+  const oldProducts = JSON.stringify(products);
 
-    orders.reverse().forEach(
-        order => {
-
-        let div =
-        document.createElement(
-            "div"
-        );
-
-
-        div.className="order-item";
-
-
-        div.innerHTML=`
-
-            <h3>
-            📦 ${order.product}
-            </h3>
-
-            <p>
-            Order ID: ${order.id}
-            </p>
-
-            <p>
-            Name: ${order.name}
-            </p>
-
-            <p>
-            Phone: ${order.phone}
-            </p>
-
-            <p>
-            Address: ${order.address}
-            </p>
-
-            <p>
-            Status: 🟡 ${order.status}
-            </p>
-
-            <p>
-            Date: ${order.date}
-            </p>
-
-        `;
-
-
-        list.appendChild(div);
-
+  if (editingId !== null) {
+    products = products.map(p =>
+      p.id === editingId
+        ? {
+            ...p,
+            name,
+            price,
+            category,
+            description,
+            image
+          }
+        : p
+    );
+  } else {
+    products.unshift({
+      id: Date.now().toString() +
+          Math.random().toString(36).slice(2, 7),
+      name,
+      price,
+      category,
+      description,
+      image
     });
+  }
 
+  if (!saveProducts()) {
+    products = JSON.parse(oldProducts);
+    return;
+  }
+
+  resetForm();
+  renderProducts();
+
+  alert(
+    editingId === null
+      ? "Product saved successfully!"
+      : "Product updated successfully!"
+  );
+});
+
+// Show all product cards.
+function renderProducts() {
+  grid.replaceChildren();
+
+  document.getElementById("totalProducts").textContent =
+    products.length;
+
+  emptyMessage.classList.toggle(
+    "hidden",
+    products.length > 0
+  );
+
+  products.forEach(product => {
+    const card = document.createElement("article");
+    card.className = "card";
+
+    const img = document.createElement("img");
+    img.src = product.image;
+    img.alt = product.name;
+    img.loading = "lazy";
+
+    const info = document.createElement("div");
+    info.className = "cardinfo";
+
+    const title = document.createElement("h3");
+    title.textContent = product.name;
+
+    const category = document.createElement("p");
+    category.className = "hint";
+    category.textContent = product.category || "Other";
+
+    const price = document.createElement("p");
+    price.className = "price";
+    price.textContent =
+      "Rs. " + Number(product.price).toLocaleString("en-IN");
+
+    const description = document.createElement("p");
+    description.className = "hint";
+    description.textContent = product.description || "";
+
+    const buttons = document.createElement("div");
+    buttons.className = "cardbuttons";
+
+    const editButton = document.createElement("button");
+    editButton.className = "gold";
+    editButton.textContent = "Edit";
+    editButton.addEventListener("click", () => editProduct(product.id));
+
+    const deleteButton = document.createElement("button");
+    deleteButton.className = "red";
+    deleteButton.textContent = "Delete";
+    deleteButton.addEventListener(
+      "click", () => deleteProduct(product.id)
+    );
+
+    const orderLink = document.createElement("a");
+    orderLink.className = "navlink green";
+    orderLink.textContent = "Order";
+    orderLink.target = "_blank";
+    orderLink.rel = "noopener";
+    orderLink.href =
+      "https://wa.me/9779700007714?text=" +
+      encodeURIComponent(
+        "Hello Ashok Fancy! I want to order: " +
+        product.name + ", Price: Rs. " + product.price
+      );
+
+    buttons.append(editButton, deleteButton, orderLink);
+
+    info.append(title, category, price, description, buttons);
+    card.append(img, info);
+    grid.append(card);
+  });
 }
 
+// Load a product into the form for editing.
+function editProduct(id) {
+  const product = products.find(p => p.id === id);
 
-/* =================================
-   LOGOUT
-================================= */
+  if (!product) return;
 
-function logout(){
+  editingId = id;
+  nameInput.value = product.name;
+  priceInput.value = product.price;
+  categoryInput.value = product.category || "Other";
+  descriptionInput.value = product.description || "";
 
-    localStorage.removeItem(
-        "loggedUser"
-    );
+  selectedImage = product.image;
+  imagePreview.src = product.image;
+  imagePreview.classList.remove("hidden");
 
+  document.getElementById("formTitle").textContent =
+    "✏️ Edit Product";
 
-    document.getElementById(
-        "dashboard"
-    ).style.display="none";
+  document.getElementById("saveButton").textContent =
+    "Update Product";
 
+  document.getElementById("cancelButton")
+    .classList.remove("hidden");
 
-    document.getElementById(
-        "publicWebsite"
-    ).style.display="block";
-
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-
-    alert(
-        "You have been logged out."
-    );
-
+  document.getElementById("editor").scrollIntoView({
+    behavior: "smooth"
+  });
 }
 
+// Delete a product after confirmation.
+function deleteProduct(id) {
+  const product = products.find(p => p.id === id);
 
-/* =================================
-   PAGE LOAD
-================================= */
+  if (!product) return;
 
-window.onload=function(){
+  if (!confirm("Delete " + product.name + "?")) return;
 
-    let logged =
-    localStorage.getItem(
-        "loggedUser"
-    );
+  const oldProducts = JSON.stringify(products);
 
+  products = products.filter(p => p.id !== id);
 
-    if(logged){
+  if (!saveProducts()) {
+    products = JSON.parse(oldProducts);
+    return;
+  }
 
-        showDashboard();
+  if (editingId === id) resetForm();
 
-    }
+  renderProducts();
+}
 
-};
+// Reset the form to add another product.
+function resetForm() {
+  form.reset();
+  editingId = null;
+  selectedImage = "";
+  imagePreview.removeAttribute("src");
+  imagePreview.classList.add("hidden");
 
+  document.getElementById("formTitle").textContent =
+    "➕ Add New Product";
+
+  document.getElementById("saveButton").textContent =
+    "Save Product";
+
+  document.getElementById("cancelButton")
+    .classList.add("hidden");
+}
+
+loadProducts();
 </script>
 
 </body>
 </html>
-    
-                            
