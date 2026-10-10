@@ -3,440 +3,240 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ashok Fancy Fashion Store</title>
+<title>Neon Scientific Calculator</title>
 
 <style>
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
 }
 
 body {
-  background: #090909;
-  color: white;
-}
-
-header {
-  background: #111;
-  padding: 17px 5%;
+  min-height: 100vh;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #d4a63c;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: #f5c75b;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  margin-left: 15px;
-  font-size: 13px;
-}
-
-.hero {
-  min-height: 460px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  text-align: center;
-  padding: 45px 18px;
-  background:
-  linear-gradient(#0009, #000b),
-  url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1400&q=85')
-  center/cover;
+  align-items: center;
+  background: radial-gradient(circle at top, #202b55, #080b18 65%);
+  font-family: Arial, sans-serif;
+  padding: 15px;
 }
 
-.hero h1 {
-  font-size: clamp(38px, 8vw, 68px);
-  color: #f5c75b;
-  letter-spacing: 3px;
-}
-
-.hero p {
-  margin: 16px 0 25px;
-  font-size: 17px;
-  line-height: 1.7;
-}
-
-.btn {
-  display: inline-block;
-  padding: 13px 24px;
-  background: #f5c75b;
-  color: #111;
-  border-radius: 30px;
-  font-weight: bold;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-}
-
-.section {
-  padding: 45px 5%;
-}
-
-.section h2 {
-  text-align: center;
-  font-size: 30px;
-  margin-bottom: 12px;
-  color: #f5c75b;
-}
-
-.subtitle {
-  text-align: center;
-  color: #ccc;
-  margin-bottom: 30px;
-}
-
-.products {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.card {
-  background: #171717;
-  border: 1px solid #333;
-  border-radius: 14px;
-  overflow: hidden;
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  border-color: #f5c75b;
-  box-shadow: 0 8px 24px #f5c75b22;
-}
-
-.card img {
+.calculator {
   width: 100%;
-  height: 230px;
-  object-fit: cover;
-  display: block;
+  max-width: 390px;
+  padding: 22px;
+  border: 1px solid #344b86;
+  border-radius: 28px;
+  background: rgba(13, 19, 39, 0.96);
+  box-shadow: 0 0 35px #1768ff35;
 }
 
-.card-content {
-  padding: 14px;
+h2 {
+  color: #63e8ff;
+  text-align: center;
+  margin-bottom: 18px;
+  letter-spacing: 2px;
+  text-shadow: 0 0 12px #00cfff;
 }
 
-.card h3 {
+#screen {
+  width: 100%;
+  height: 90px;
+  border: 1px solid #283c69;
+  outline: none;
+  border-radius: 15px;
+  background: #070c1b;
+  color: #70f7ff;
+  font-size: 29px;
+  text-align: right;
+  padding: 15px;
+  margin-bottom: 18px;
+  box-shadow: inset 0 0 12px #000;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+button {
+  height: 54px;
+  border: 1px solid #27395f;
+  border-radius: 13px;
+  color: white;
+  background: linear-gradient(145deg, #1b2745, #10172d);
   font-size: 17px;
-  margin-bottom: 9px;
-}
-
-.price {
-  color: #f5c75b;
-  font-size: 14px;
-  margin-bottom: 13px;
-}
-
-.order {
-  display: block;
-  text-align: center;
-  background: #168b47;
-  color: white;
-  padding: 11px 5px;
-  border-radius: 7px;
-  text-decoration: none;
-  font-size: 14px;
   font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 10px #0004;
+  transition: 0.15s;
 }
 
-.delivery {
+button:active {
+  transform: scale(0.92);
+  box-shadow: 0 0 15px #00d9ff;
+}
+
+.function {
+  color: #6eeaff;
+}
+
+.operator {
+  color: #d2a4ff;
+  background: #282047;
+}
+
+.clear {
+  color: #ff809c;
+  background: #401b32;
+}
+
+.equal {
+  background: linear-gradient(135deg, #087eff, #a02cff);
+  border: none;
+  box-shadow: 0 0 14px #526dff70;
+}
+
+.zero {
+  grid-column: span 2;
+}
+
+.footer {
   text-align: center;
-  padding: 40px 15px;
-  background: linear-gradient(135deg, #29200c, #111);
-  border-top: 1px solid #5e491a;
-  border-bottom: 1px solid #5e491a;
-}
-
-.delivery h2 {
-  color: #f5c75b;
-  margin-bottom: 15px;
-}
-
-.delivery p {
-  line-height: 1.9;
-}
-
-.contact {
-  text-align: center;
-  padding: 45px 15px;
-}
-
-.contact h2 {
-  color: #f5c75b;
-  margin-bottom: 20px;
-}
-
-.contact p {
-  margin: 14px 0;
-}
-
-.contact a {
-  color: #f5c75b;
-  text-decoration: none;
-}
-
-.social {
-  display: inline-block;
-  margin: 8px;
-  padding: 12px 22px;
-  border-radius: 8px;
-  color: white !important;
-  background: #242424;
-  border: 1px solid #444;
-}
-
-footer {
-  text-align: center;
-  background: #111;
-  padding: 20px;
-  color: #aaa;
-  font-size: 13px;
-}
-
-.float-wa {
-  position: fixed;
-  right: 17px;
-  bottom: 18px;
-  background: #25d366;
-  color: white;
-  padding: 14px 17px;
-  border-radius: 40px;
-  text-decoration: none;
-  font-weight: bold;
-  box-shadow: 0 4px 18px #0009;
-  z-index: 20;
-}
-
-@media (max-width: 900px) {
-  .products {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 600px) {
-  header {
-    flex-direction: column;
-    gap: 13px;
-  }
-
-  nav a {
-    margin: 0 7px;
-  }
-
-  .products {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 11px;
-  }
-
-  .card img {
-    height: 175px;
-  }
-
-  .card-content {
-    padding: 10px;
-  }
-
-  .card h3 {
-    font-size: 14px;
-  }
-
-  .hero {
-    min-height: 390px;
-  }
+  color: #7d91bb;
+  font-size: 11px;
+  margin-top: 18px;
+  letter-spacing: 2px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <div class="logo">✦ ASHOK FANCY</div>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#shop">Shop</a>
-    <a href="#delivery">Delivery</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+<div class="calculator">
+  <h2>NEON CALC</h2>
 
-<section class="hero" id="home">
-  <h1>ASHOK FANCY</h1>
-  <p>
-    YOUR STYLE. YOUR ATTITUDE.<br>
-    Discover Your Perfect Fashion ✨<br>
-    <strong>Online Delivery Available 🚚</strong>
-  </p>
-  <a href="#shop" class="btn">EXPLORE COLLECTION</a>
-</section>
+  <input id="screen" type="text"
+         placeholder="0"
+         readonly aria-label="Calculator display">
 
-<section class="section" id="shop">
-  <h2>🔥 OUR FASHION COLLECTION</h2>
-  <p class="subtitle">
-    Fresh looks • Modern styles • Easy WhatsApp ordering
-  </p>
+  <div class="buttons">
+    <button class="clear" onclick="clearScreen()">AC</button>
+    <button class="clear" onclick="del()">DEL</button>
+    <button class="operator" onclick="add('%')">%</button>
+    <button class="operator" onclick="add('/')">÷</button>
 
-  <div class="products">
+    <button class="function" onclick="fn('sin')">sin</button>
+    <button class="function" onclick="fn('cos')">cos</button>
+    <button class="function" onclick="fn('tan')">tan</button>
+    <button class="operator" onclick="add('*')">×</button>
 
-    <div class="card">
-      <img src=b.jpg>
-      <div class="card-content">
-        <h3>Classic T-Shirt</h3>
-        <p class="price">Price on WhatsApp</p>
-        <a class="order" href="https://wa.me/9779700007714?text=Hello%20Ashok%20Fancy%2C%20I%20want%20to%20order%20Classic%20T-Shirt." target="_blank">Order Now</a>
-      </div>
-    </div>
+    <button class="function" onclick="fn('sqrt')">√</button>
+    <button class="function" onclick="square()">x²</button>
+    <button class="function" onclick="fn('log')">log</button>
+    <button class="operator" onclick="add('-')">−</button>
 
-    <div class="card">
-      <img src="c.jpg">
-      <div class="card-content">
-        <h3>T-shirt Fashion</h3>
-        <p class="price">Price on WhatsApp</p>
-        <a class="order" href="https://wa.me/9779700007714?text=Hello%20Ashok%20Fancy%2C%20I%20want%20to%20order%20Womens%20Fashion." target="_blank">Order Now</a>
-      </div>
-    </div>
+    <button class="function" onclick="add('(')">(</button>
+    <button class="function" onclick="add(')')">)</button>
+    <button class="function" onclick="add('.')">.</button>
+    <button class="operator" onclick="add('+')">+</button>
 
-    <div class="card">
-      <img src="d.jpg">
-      <div class="card-content">
-        <h3>Long t.shirt</h3>
-        <p class="price">Price on WhatsApp</p>
-        <a class="order" href="https://wa.me/9779700007714?text=Hello%20Ashok%20Fancy%2C%20I%20want%20to%20order%20a%20Stylish%20Jacket." target="_blank">Order Now</a>
-      </div>
-    </div>
+    <button onclick="add('7')">7</button>
+    <button onclick="add('8')">8</button>
+    <button onclick="add('9')">9</button>
+    <button class="function" onclick="add('pi')">π</button>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=600&q=80" alt="Casual clothing">
-      <div class="card-content">
-        <h3>Casual Wear</h3>
-        <p class="price">Price on WhatsApp</p>
-        <a class="order" href="https://wa.me/9779700007714?text=Hello%20Ashok%20Fancy%2C%20I%20want%20to%20order%20Casual%20Wear." target="_blank">Order Now</a>
-      </div>
-    </div>
+    <button onclick="add('4')">4</button>
+    <button onclick="add('5')">5</button>
+    <button onclick="add('6')">6</button>
+    <button class="function" onclick="add('e')">e</button>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=600&q=80" alt="Denim jeans">
-      <div class="card-content">
-        <h3>Denim Jeans</h3>
-        <p class="price">Price on WhatsApp</p>
-        <a class="order" href="https://wa.me/9779700007714?text=Hello%20Ashok%20Fancy%2C%20I%20want%20to%20order%20Denim%20Jeans." target="_blank">Order Now</a>
-      </div>
-    </div>
+    <button onclick="add('1')">1</button>
+    <button onclick="add('2')">2</button>
+    <button onclick="add('3')">3</button>
+    <button class="function" onclick="add('^')">xʸ</button>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=600&q=80" alt="Formal shirts">
-      <div class="card-content">
-        <h3>Formal Shirts</h3>
-        <p class="price">Price on WhatsApp</p>
-        <a class="order" href="https://wa.me/9779700007714?text=Hello%20Ashok%20Fancy%2C%20I%20want%20to%20order%20Formal%20Shirts." target="_blank">Order Now</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="e.jpg">
-      <div class="card-content">
-        <h3>Trendy Outfits</h3>
-        <p class="price">Price on WhatsApp</p>
-        <a class="order" href="https://wa.me/9779700007714?text=Hello%20Ashok%20Fancy%2C%20I%20want%20to%20order%20Trendy%20Outfits." target="_blank">Order Now</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1618354691229-88d47f285158?auto=format&fit=crop&w=600&q=80" alt="Premium T-shirt">
-      <div class="card-content">
-        <h3>Premium T-Shirts</h3>
-        <p class="price">Price on WhatsApp</p>
-        <a class="order" href="https://wa.me/9779700007714?text=Hello%20Ashok%20Fancy%2C%20I%20want%20to%20order%20Premium%20T-Shirts." target="_blank">Order Now</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="g.jpg">
-      <div class="card-content">
-        <h3>Fashion Tops</h3>
-        <p class="price">Price on WhatsApp</p>
-        <a class="order" href="https://wa.me/9779700007714?text=Hello%20Ashok%20Fancy%2C%20I%20want%20to%20order%20Fashion%20Tops." target="_blank">Order Now</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="h.jpg">
-      <div class="card-content">
-        <h3>New t-shirt</h3>
-        <p class="price">Price on WhatsApp</p>
-        <a class="order" href="https://wa.me/9779700007714?text=Hello%20Ashok%20Fancy%2C%20I%20want%20to%20see%20the%20New%20Collection." target="_blank">Order Now</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="i.jpg">
-      <div class="card-content">
-        <h3>Streetwear Style</h3>
-        <p class="price">Price on WhatsApp</p>
-        <a class="order" href="https://wa.me/9779700007714?text=Hello%20Ashok%20Fancy%2C%20I%20want%20to%20order%20Streetwear." target="_blank">Order Now</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="j.jpg">
-      <div class="card-content">
-        <h3>Elegant Fashion</h3>
-        <p class="price">Price on WhatsApp</p>
-        <a class="order" href="https://wa.me/9779700007714?text=Hello%20Ashok%20Fancy%2C%20I%20want%20to%20order%20Elegant%20Fashion." target="_blank">Order Now</a>
-      </div>
-    </div>
-
+    <button class="zero" onclick="add('0')">0</button>
+    <button class="function" onclick="add('00')">00</button>
+    <button class="equal" onclick="calculate()">=</button>
   </div>
-</section>
 
-<section class="delivery" id="delivery">
-  <h2>🚚 ONLINE DELIVERY AVAILABLE</h2>
-  <p>
-    Shop from the comfort of your home!<br>
-    Browse our collection and order directly on WhatsApp.<br>
-    📦 Delivery charges and available locations confirmed when ordering.<br>
-    💬 Message us to check size, stock and price.
-  </p>
-  <br>
-  <a class="btn"
-     href="https://wa.me/9779700007714?text=Hello%20Ashok%20Fancy%2C%20please%20tell%20me%20about%20online%20delivery."
-     target="_blank">ORDER FOR DELIVERY</a>
-</section>
+  <div class="footer">SCIENTIFIC • SMART • NEON</div>
+</div>
 
-<section class="contact" id="contact">
-  <h2>CONTACT ASHOK FANCY</h2>
-  <p>📱 WhatsApp: 9700007714</p>
-  <p>🎵 TikTok: @Ashok fancy77</p>
+<script>
+const screen = document.getElementById("screen");
 
-  <a class="social"
-     href="https://wa.me/9779700007714"
-     target="_blank">💬 WhatsApp Us</a>
+function add(value) {
+  if (screen.value === "Error") screen.value = "";
+  screen.value += value;
+}
 
-  <a class="social"
-     href="https://www.tiktok.com/@ashokfancy77"
-     target="_blank">🎵 Follow on TikTok</a>
-</section>
+function clearScreen() {
+  screen.value = "";
+}
 
-<footer>
-  <p>© 2026 Ashok Fancy. All Rights Reserved.</p>
-  <p>Fashion • Style • Confidence ✨</p>
-</footer>
+function del() {
+  screen.value = screen.value.slice(0, -1);
+}
 
-<a class="float-wa"
-   href="https://wa.me/9779700007714?text=Hello%20Ashok%20Fancy%2C%20I%20want%20to%20place%20an%20order."
-   target="_blank">💬 Order on WhatsApp</a>
+function fn(name) {
+  if (screen.value === "Error") screen.value = "";
+  screen.value += name + "(";
+}
+
+function square() {
+  if (screen.value) screen.value = "(" + screen.value + ")^2";
+}
+
+function calculate() {
+  try {
+    let expression = screen.value
+      .replace(/π/g, "pi");
+
+    if (!expression.trim()) return;
+
+    // Convert scientific functions to JavaScript Math functions.
+    expression = expression
+      .replace(/\bpi\b/g, "Math.PI")
+      .replace(/\be\b/g, "Math.E")
+      .replace(/\bsin\(/g, "Math.sin(Math.PI/180*(")
+      .replace(/\bcos\(/g, "Math.cos(Math.PI/180*(")
+      .replace(/\btan\(/g, "Math.tan(Math.PI/180*(")
+      .replace(/\bsqrt\(/g, "Math.sqrt(")
+      .replace(/\blog\(/g, "Math.log10(")
+      .replace(/\^/g, "**")
+      .replace(/(\d+(?:\.\d+)?)%/g, "($1/100)");
+
+    // Accept only calculator expression characters.
+    if (!/^[0-9+\-*/().%\sA-Za-z]*$/.test(expression) ||
+        /[A-Za-z](?![A-Za-z])/.test(expression.replace(
+          /Math\.(PI|E|sin|cos|tan|sqrt|log10)/g, ""))) {
+      throw new Error("Invalid");
+    }
+
+    // Only the Math operations and syntax above are permitted.
+    if (/[^0-9+\-*/().\sA-Za-z]/.test(expression) ||
+        /[A-Za-z]/.test(expression.replace(
+          /Math\.(PI|E|sin|cos|tan|sqrt|log10)/g, ""))) {
+      throw new Error("Invalid");
+    }
+
+    const result = Function('"use strict"; return (' +
+      expression + ')')();
+
+    if (typeof result !== "number" || !Number.isFinite(result)) {
+      throw new Error("Invalid");
+    }
+
+    screen.value = String(Number(result.toPrecision(12)));
+  } catch (error) {
+    screen.value = "Error";
+  }
+}
+</script>
 
 </body>
 </html>
